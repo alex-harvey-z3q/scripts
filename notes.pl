@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-my $notes = $ARGV[0] ? $ARGV[0] : 'notes_file.txt';
+my $notes = $ARGV[0] ? $ARGV[0] : 'notes.txt';
 $notes eq '-h' and usage();
 
 my %data = ();
