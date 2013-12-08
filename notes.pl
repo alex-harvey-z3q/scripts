@@ -20,7 +20,7 @@ my $slide;
 open NOTES, "<$notes" or die "open: $! ($notes)";
 while (<NOTES>) {
     if ($. == 0 and !m#/.*\.md:#) {
-        print "error: first line must be a slide name + ':'\n";
+        print "error: $notes line $.: first line must be a slide name + ':'\n";
         exit 1;
     }
     if (m#/.*\.md:#) {
