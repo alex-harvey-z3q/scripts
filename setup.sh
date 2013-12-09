@@ -45,4 +45,4 @@ perl -pi -e '
 
 # start showoff.
 cd $SHOWOFF_DIR
-showoff serve -f showoff.json -h $IP
+showoff serve -f showoff.json
