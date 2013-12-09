@@ -43,9 +43,9 @@ foreach my $slide (keys %data) {
     system("mv -f tmp.$$ $s");
     system("sed '/^~~~SECTION:notes~~~/,/^~~~ENDSECTION~~~/d' $s >tmp.$$");
     system("mv -f tmp.$$ $s");
+    system("echo '' >>$s");
     system("echo '~~~SECTION:notes~~~' >>$s");
     open FILE, ">>$s" or die "open: $!";
-    print FILE "\n";
     print FILE $data{$slide};
     close FILE;
     system("echo '~~~ENDSECTION~~~' >>$s");
