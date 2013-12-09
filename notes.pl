@@ -17,6 +17,7 @@ my %data = ();
 
 my $slide;
 
+print 'reading $notes ';
 open NOTES, "<$notes" or die "open: $! ($notes)";
 while (<NOTES>) {
     if ($. == 0 and !m#/.*\.md:#) {
@@ -24,6 +25,7 @@ while (<NOTES>) {
         exit 1;
     }
     if (m#/.*\.md:#) {
+        print '.';
         chomp;
         $slide = $_;
         $slide =~ s/:$//;
@@ -33,12 +35,14 @@ while (<NOTES>) {
     $data{$slide} .= $_;
 }
 close NOTES;
+print "ok\n";
 
 # add notes to slides.
 
+print 'adding notes to slides ';
 foreach my $slide (keys %data) {
     my $s = "$courseware_dir/$slide";
-    print "processing '$slide' ...\n";
+    print '.';
     system("sed '/^\.notes/d' $s >tmp.$$");
     system("mv -f tmp.$$ $s");
     system("sed '/^~~~SECTION:notes~~~/,/^~~~ENDSECTION~~~/d' $s >tmp.$$");
@@ -50,6 +54,7 @@ foreach my $slide (keys %data) {
     close FILE;
     system("echo '~~~ENDSECTION~~~' >>$s");
 }
+print "\n";
 
 # subroutines.
 
