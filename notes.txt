@@ -16,6 +16,7 @@ want a grounding in the fundamentals of the Puppet language and best practices.
 Course_Overview/Course_Overview.md:
 
 In this course you will (among other things):
+
 * learn to write puppet modules
 * learn how to test those modules
 * learn how to use the Enterprise Console
@@ -26,161 +27,177 @@ Course_Overview/Course_Agenda_1.md:
 
 On day #1 we intend to cover:
 
+* A general overview of Puppet
+* Some basic concepts
+* Our classroom environment
+* The Puppet Master and Agent roles
+* We will write some simple modules and classes
+* And we will learn about classification - applying classes to nodes
+
 Course_Overview/Course_Agenda_2.md:
 
-On day #2:
+On day #2 we will look at:
+
+* Resources also known as types or resource types
+* Chaining or ordering resources
+* We will look at language constructs - if, else, case statements and so on
+* How to add dynamic content to files using ERB templates
+* And defined resources
 
 Course_Overview/Course_Agenda_3.md:
 
-On day #3:
+And on day #3 we will look at:
 
-About_Puppet/About_Puppet.md:
- 
-* Luke Kanies wrote Puppet in 2005, after having spent a lot of time consulting for CFengine.
-* He had become frustrated with CFengine by that stage and was finding it hard to contribute back to the CFengine project.
-* He converted his consulting company to Reductive Labs and later renamed it Puppet Labs.
-* (In 2011...) In 2011 Puppet Labs released its first commercial product, Puppet Enterprise.
-* (now read last 5 bullets) Now we have: over 1000 forge modules; over 6000 active community members; over 20000 users; and some sites doing more than 50000 nodes.
-* Support for all major linuxes, BSDs, Windows, Solaris, AIX, and Mac OS X.
-
-About_Puppet/Data_Flow_for_Nodes.md:
-
-Let's have a look at a high level at the data flow in Puppet:
-* A agent sends facts and requests its so-called "catalog"
-* The master responds by combining those facts with your manifest code to compile a catalog.
-* The agent applies that catalog and sends back a report.
-* Optionally, that report is sent on to a report handler.
-
-Any questions?
- 
-About_Puppet/How_Puppet_Works.md:
-
-* (define) We define the desired state of our systems.
-* (simulate) Simulate proposed changes.
-* (enforce) Enforce the desired state automatically.
-* (report) Report back on any changes.
-
-About_Puppet/Introducing_PE.md:
-
-Puppet Enterprise adds:
-* Convenient installer - the components of Puppet are installed and configured automatically.
-* The Enterprise Console - honestly, it's crap.
-* Orchestration - Live Management is available in the Console.
-* VMware cloud provisioner - only available in PE.
-
-About_Puppet/Introducing_Puppet.md:
-
-With Puppet we can:
-* Increase our productivity (spend more time on interesting work, less time fighting fires).
-* Provisioning in minutes instead of weeks (who's ever been told or worse told customers that it will take more than a week to provision a new server?)
-* Eliminates configuration drift.
-* Makes changes visible.
-* Cuts the software release cycle down to days or even hours.
+* The puppet forge
+* Advanced classes - class inheritance and parameterized classes
+* Report handlers
+* Live Management and MCollective
+* Data separation using Hiera
+* And then we'll have the Capstone lab, where we try to put everything together and build a Wordpress server.
 
 About_Puppet/Objectives.md:
 
 In this lesson we will:
+
 * Identify the challenges of managing infrastructure at scale.
 * Talk about how Puppet overcomes these challenges.
 * And we'll look at the community resources available to you.
 
 (ignore last bullet.)
 
-About_Puppet/PE_Stack.md:
-
-Here we see components in the PE stack.
+About_Puppet/About_Puppet.md:
+ 
+* Luke Kanies wrote Puppet in 2002, after having spent a lot of time consulting for CFengine.
+* He had become frustrated with CFengine and was finding it hard to contribute back to the CFengine project.
+* In 2003 he converted his consulting company to Reductive Labs and later renamed it Puppet Labs.
+* In 2005 he renamed his company Puppet Labs.
+* In 2011 Puppet Labs released its first commercial product, Puppet Enterprise.
+* (now read last 5 bullets) Now we have: over 1000 forge modules; over 6000 active community members; over 20000 users; and some sites doing more than 50000 nodes.
+* Support for all major linuxes, BSDs, Windows, Solaris, AIX, and Mac OS X.
 
 About_Puppet/Puppet_Customers.md:
 
 * Here are some of our customers.
-* Customers in Sydney and Australia include the big four banks, the Telcos, Federal Government, and Universities.
+* We also have a lot of customers in Australia.
+* You may be surprised to know that Sydney is one of the biggest consumers of Puppet Fundamentals courses in the world.
+* Customers in Sydney and Australia include the big four banks, the Telcos, Federal Government departments, and Universities.
 
-About_Puppet/Puppet_Works_Define2.md:
+About_Puppet/Current_State.md:
 
-Here is an example of some Puppet code.
-Can anyone guess what that does?
-Does anyone feel they couldn't guess what that does?
+Manually configure:
+
+* In the old days systems administration was about manually configuring stuff.  In fact a surprising number of companies still manually configure stuff.  Some even say it's the Right Way to do things.
+* Who here started their careers manually configuring infrastructure?  Who broke stuff because you made some typo in a configuration file?
+* Obviously, manually configuring stuff leads to - time being wasted; human error breaking stuff.
+
+Golden Images:
+
+* One of the earliest attempts to get away from manual configuration was use of Golden Images.
+* When I started as a sysadmin I had to build Windows laptops for customers.  So I used this product called 'Norton's Ghost'.  Problems: new Dell laptops; had to install patches.
+
+Custom scripts:
+
+* To address the problems with Golden Images another approach was to use a cut-down image with no configuration and then write a custom script to configure the infrastructure. 
+* Custom scripts often aren't documented; aren't well written; sysadmins then leave; and the same script gets written again (because the new guy thinks the last guy's script was crap).
+
+And thus we arrive at the 'all-or-nothing software packages'.
+
+* Actually we are thinking of BMC Bladelogic; HP OpsWare; IBM's Tivoli and so on.
+* These problems are typically very difficult to use; often very expensive; and to cut a long story short, really no one uses them anymore.
+
+About_Puppet/Introducing_Puppet.md:
+
+With Puppet we can:
+
+* Increase our productivity (spend more time on interesting work, less time fighting fires).
+* Do provisioning in minutes instead of weeks (who's ever had to tell a customer that it'll take several weeks to install a server?)
+* Puppet eliminates configuration drift.
+* Puppet brings visibility to configuration and changes.
+* Cuts the software release cycle down from weeks and months to days and hours.
+
+About_Puppet/Introducing_PE.md:
+
+Puppet Enterprise adds:
+
+* Convenient installer - the components of Puppet are installed and configured automatically.
+* The Enterprise Console - honestly, it's crap.
+* Orchestration - Puppet Enterprise automatically configures MCollective (and anyone who's tried to do it using the open source product will know it's a pain).
+* VMware cloud provisioner - only available in PE.
+
+About_Puppet/PE_Stack.md:
+
+Here are the components of the PE stack.
+
+* The Puppet Master and Agent
+* The Puppet module tool
+* The Enterprise Console
+* That's integrated with MCollective to give you Live Management
+* It's automatically configured to scale
+* Behind an apache load balancer with Passenger and Rack/Rails
+* All of our software is fully tested on all supported platforms
+* And best of all you get Enterprise support
 
 About_Puppet/Resources.md:
 
 Services:
-* Bootstrap
-* Quickstart
-* Code audits
-* Customised
+
+* Service offerings include: Bootstrap, Quickstart, Code audits, Customised training
+
 Support:
+
 * Two levels of support available - standard and premium.
 * See <http://puppetlabs.com/services/support-plans/> for more info
-Training:
-* Fundamentals, Advanced, Extending - also customised training available.
+Training.
+* Aside from this Puppet Fundamentals course I recommend you all come back some time and do the Advanced course and Extending Puppet using Ruby.
+
+About_Puppet/How_Puppet_Works.md:
+
+* (define) We define the desired state of our systems.
+* (simulate) Simulate proposed changes.
+* (enforce) Enforce the desired state automatically.
+* (report) Report back on any changes.
+ 
+About_Puppet/Puppet_Works_Define2.md:
+
+* Here is an example of some Puppet code.
+* Can anyone guess what that does?
+* Does anyone feel they couldn't guess what that does?
+
+About_Puppet/Data_Flow_for_Nodes.md:
+
+Let's have a look at a high level at the data flow in Puppet:
+
+* A agent sends facts and requests its so-called "catalog"
+* The master responds by combining those facts with your manifest code to compile a catalog.
+* The agent applies that catalog and sends back a report.
+* Optionally, that report is sent on to a report handler.
+
+Any questions so far?
 
 Concepts/Objectives.md:
 
 (SKIP this.)
 
-Concepts/complications.md:
+Concepts/the_problem.md:
 
-(Read this slide word for word slowly from the top.)
+(Read this slide from the top, slowly, word for word.)
 
-Concepts/declarations.md:
+Concepts/traditional_solutions.md:
 
-A resource declaration is made up of:
-* A type (user)
-* A title (elmo)
-* And attribute -> value pairs.
+We have the following tools that can help us.
 
-Concepts/describe_state.md:
+Concepts/traditional_problems.md:
 
-* This little piece of code describes the "desired state".
-* Now imagine that the actual state is different - suppose the GID is "staff" and home is something different.
-* We refer to this situation as "configuration drift".  We say the actual configuration has drifted from the desired configuration.
-* "Convergence" is the process of applying the desired state against the actual state.
+Let's imagine we have 200 servers and six different versions of Linux.
 
-Concepts/drift_graphic.md:
-
-Convergence actions are then reported.
-
-(Skip the next slide.)
-
-Concepts/example.md:
-
-Resources contain "attributes" that we can set. (Skip straight on.)
-
-Concepts/idempotent.md:
-
-Idempotence.
-
-(Read the definition out.)
-
-Examples of commands that are idempotent:
-* ls
-* touch /reconfigure
-
-Examples of commands that are not idempotent:
-* logger -p
-* mkfs
-
-Understanding idempotency is important when writing Puppet code.
-
-Concepts/imperative.md:
-Concepts/infrastructure_as_code.md:
-
-We like to say that "Puppet code is executable documentation".  It's "descriptive, straightforward, transparent".  I'm really talking this up!
-
-Concepts/language_overview.md:
-
-* The basic building blocks of Puppet code are "resources".
-* Resources are also known as "types" or "resource types".
-
-Concepts/puppet_way.md:
-
-Puppet solves all of these problems we've been discussing.
- 
-(DON'T discuss the code until the next slide!)
+* Who knows what the difference is between useradd and adduser?
+* Who knows what superadduser is?
+* Who knows what -l and/or the -L option?
+* And what happens if I run useradd twice?
 
 Concepts/shell_script.md:
 
-Okay, so sooner or later a sysadmin is going to get sick of this and will write something like this.
+Okay, so sooner or later you're going to get sick of adding users and you'll write something like this:
  
 * Who thinks this is a well-written script?
 * Who thinks it's terrible?
@@ -189,21 +206,260 @@ Okay, so sooner or later a sysadmin is going to get sick of this and will write 
 
 (Go to next slide to discuss problems.)
 
-Concepts/the_problem.md:
+Concepts/complications.md:
 
-(Read this slide from the top, slowly, word for word.)
+(Read this slide word for word slowly from the top.)
 
-Concepts/traditional_problems.md:
+Concepts/puppet_way.md:
 
-Let's imagine we want this use added on multiple platforms.
-* (useradd or adduser) Who knows what the difference is between useradd and adduser?
-* (superadduser) Who knows what superadduser is?
-* (-l -L) Who uses the -l and/or the -L option?
-* (idempotency) What happens if I run the useradd command twice?
+Puppet solves all of these problems we've been discussing.
+ 
+(Go to next slide before discussing the code.)
 
-Concepts/traditional_solutions.md:
+Concepts/describe_state.md:
 
-We have the following tools that can help us.
+* This little piece of code describes a "desired state".
+* Now imagine that the actual state is different - suppose the GID is "staff" and home is wrong.
+* We refer to this situation as "configuration drift".  We say the actual configuration has drifted from the desired configuration.
+* "Convergence" is the process of applying the desired state over the actual state.
+
+Concepts/drift_graphic.md:
+
+These convergence actions are then reported.
+
+(Skip the next slide.)
+
+Concepts/infrastructure_as_code.md:
+
+* We like to say that "Puppet code is executable documentation".
+* If the code looks like this we probably don't need a man page to go with it.
+* It's "descriptive, straightforward, transparent".  I'm really talking this up!
+
+Concepts/idempotent.md:
+
+Idempotence.
+
+(Read the definition out.)
+
+Examples of commands that are idempotent:
+
+* ls
+* touch /reconfigure
+
+Examples of commands that are not idempotent:
+
+* logger -p
+* mkfs
+
+Understanding idempotency is important when writing Puppet code.  We'll come back to this throughout the course.
+
+Concepts/language_overview.md:
+
+* The basic building blocks of Puppet code are "resources".
+* Resources are also known as "types" or "resource types".
+
+Concepts/example.md:
+
+Resources contain "attributes" that we can set. (Skip straight on.)
+
+Concepts/declarations.md:
+
+A resource declaration is made up of:
+
+* A type (user)
+* A title (elmo)
+* And attribute -> value pairs.
+* And also, note that the titles need to be unique.
+
+Concepts/imperative.md:
+
+* Puppet is a declarative modelling language.
+* Other declarative languages include:  Makefiles; HTML; Veritas Cluster Server main.cf
+* A declarative language 'declares' a desired state with specifying how that state is achieved.
+* Declarative programming is to be constrasted with imperative programming languages.
+* Imperative languages include: shell, C, Perl, Python and Ruby.
+
+Concepts/abstraction.md:
+
+* Resources are abstracted away from the implementation detail of platform-specific providers.
+* This means Puppet is smart enough to guess that if you ask it to install a package on Red Hat or Ubuntu that it should use either yum or apt-get.
+
+Concepts/RAL_overview.md:
+
+* Thus we say that Puppet provides a 'Resource Abstraction Layer' or RAL.
+
+Concepts/type_provider.md:
+
+* So the resource abstraction layer exposes resource types ...
+
+Concepts/providers.md:
+
+* ... whereas it hides the underlying "providers".
+
+Concepts/package.md:
+
+* And here are the source files for the underlying platform-specific 'package' providers.
+
+Concepts/dag.md:
+
+* A feature of Puppet that beginners often struggle with is that of "resource ordering".  
+* Unlike in imperative languages like shell, the code isn't necessarily executed in the order that it's written.
+* Instead, resources declarations are applied based on explicit and implicit dependencies between resources.
+* We'll look at this in much greater detail later in the course.
+
+Any questions?
+
+Classroom_Setup/Objectives.md:
+
+In this lesson we're going to
+
+* Learn how to install the Puppet Enterprise puppet master and client.
+* Learn about facts and Facter.
+* Learn about the 'puppet resource' command.
+* Learn a basic development workflow using GIT that we'll be using throughout this course.
+
+Classroom_Setup/Puppet_Master.md:
+
+Our Puppet Master is going to:
+
+* Compile and serve catalogs to agents; it will run MCollective; it will run a report handler; and it will run a revision control system, namely GIT.
+
+Now, I'm about to show you all how to install the Puppet Master.  The inputs to this process are:
+
+* Certname; DNS name and alias; Login information for the console
+
+Also, we need to ensure that the time is synced.
+
+Note that problems with time sync and DNS resolution account for many of the problems that get raised with Support.
+
+Classroom_Setup/demo1.md:
+
+Doco:
+
+* https://github.com/puppet-training/courseware-fundamentals
+* HOWTO Demo#1 Installing Puppet Master
+* NOTE: the 'puppet agent -t' step is missing from the end of Lab 3.2!!
+
+Classroom_Setup/Facter_overview.md:
+
+* Puppet uses a program called 'Facter' that returns so-called 'facts' about client nodes.
+* Facter returns a list of key value pairs, that is, the facts and their values.
+
+Classroom_Setup/Resource_overview.md:
+
+* The 'puppet resource' command is a very useful tool that returns resource information about the host formatted as Puppet Manifest code.
+
+Classroom_Setup/query.md:
+
+* Here's an example.
+* So 'puppet resource user elvis' returns 'ensure absent', the current state of the 'elvis' user.
+* Another way of thinking about it is it returns the Puppet Code that is needed to enforce the state of this system as it is now.
+
+Classroom_Setup/query_all.md:
+
+If you run 'puppet resource user', you will see all of the users on your system formatted in puppet manifest code.
+
+Classroom_Setup/Agent_Master_Certs.md:
+
+* Puppet uses SSL to facilitate secure Agent-Master communication.
+* When you all typed 'puppet agent -t' in the lab, a certificate signing request was sent off to the master.  The master is now waiting for me to sign them all.
+
+Classroom_Setup/demo2.md:
+
+* Okay we have two ways of signing the certificates.
+* 1)  Go to https://masterip/, and show how you could sign all the certs.
+* 2)  From the command line issue 'puppet cert sign --all'
+
+Classroom_Setup/vcs_overview.md:
+
+A version control workflow provides us with:
+
+* A way of making changes safely.
+* A method for collaborating with others.
+* A log of your change history.
+* A way of reverting changes.
+
+Classroom_Setup/vcs_workflow.md:
+
+Here is the process we'll follow.
+
+* We update our working directory - sync with the upstream repo in other words.
+* Then we do some development.
+* Then we run some validation commands - syntax validation, and so on.
+* We test our code by running tests.
+* If we're satisfied, we push our code back to the Master repo.
+* Then test our code in a development environment.
+
+Classroom_Setup/Classroom_Environment.md:
+
+This diagram represents our revision control environment.
+
+* On the master you all have home directories in /home.
+* On the agent you'll do your development in /root/puppetcode, and this will be synced to the master when you run 'git push'.
+
+Classroom_Setup/git_mini_tutorial.md:
+
+We're going to spend a few slides talking about GIT.
+
+* It is not mandatory that you use GIT.  At Puppet Labs we believe GIT is the best VCS out therebut if you already have, say, SVN set up and working, it may be that SVN is the right choice for you.  Don't worry, Puppet works fine with any VCS.
+
+About GIT:
+
+* It was developed in 2005 by Linus Torvalds as a replacement VCS for the linux kernel developers.
+* It was designed to be fast, distributed, free, and capable of handling several hundred commits per day, as were the needs of the linux kernel developers.  
+* Its main advantage over SVN is that there is no need for a network, no need to check out a revision of code, which is a slow operating, and branching and merging is much easier and faster.
+* I haven't personally ever heard anyone who has used GIT say that they don't like it.
+
+On the following slides we'll cover a few commands that we'll use in the course.
+
+Classroom_Setup/git_mini_tutorial_status.md:
+
+Git status shows us the status of the working directory.
+
+Classroom_Setup/git_mini_tutorial_add.md:
+
+Git add stages changes in a file or files ready to be committed.
+
+Classroom_Setup/git_mini_tutorial_commit.md:
+
+* Git commit commits your staged changes and prompts you to add a commit message.
+* You can also add your commit message on the command line using -m.
+
+Classroom_Setup/git_mini_tutorial_distributed.md:
+
+Here we can see the distributed nature of GIT.  
+
+* There's no single point of failure because every copy of the respository is equal.
+* And because I have the whole repository locally, everything is fast.
+
+Classroom_Setup/git_mini_tutorial_push.md:
+
+And finally, git push is the command we use to push our local changes to a remote repo.
+
+* Note that 'master' isn't referring to the 'puppet master' but to the master branch of the repository.
+
+Classroom_Setup/vcs_workflow_git.md:
+
+Here's a summary of the GIT workflow:
+
+* We pull any changes from the upstream repository using 'git pull'.
+* Do some development.
+* Add changes ready for commit using 'git add'.
+* Commit changes using 'git commit'.
+* Push our changes back using 'git push'.
+* And then we test our code in a development environment.
+
+Classroom_Setup/git_mini_tutorial_more.md:
+
+Here are some more useful GIT commands:
+
+* Git diff will show you a diff between two changes.
+* Git log shows you the log of changes.
+* Git show can show you a specific change.
+* Git blame is a useful command for finding out which change broke something.
+* Git branch and git checkout are used for creating and switching branches.
+
+If you want to know more I thoroughly recommend that you read the online GIT book.  It takes a while to learn GIT but it's well worth the effort.
 
 Defined_Resources/Objectives.md:
 
