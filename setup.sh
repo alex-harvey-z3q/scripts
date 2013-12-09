@@ -1,6 +1,6 @@
 #!/bin/bash -x
 cd $HOME/VMs/
-DATE=`date +%e%b`
+DATE=`date +%e%b |sed -e 's/ //'`
 mkdir puppet-master-$DATE
 mkdir puppet-client-$DATE
 mkdir puppet-ubuntu-$DATE
