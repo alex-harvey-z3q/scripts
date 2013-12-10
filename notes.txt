@@ -747,6 +747,76 @@ Classification/console_node.md:
 
 And here is our node definition in the Console.  Note that this node defition in the console is equivalent to this piece of site.pp code.
 
+Resource_Relationships/Objectives.md:
+
+In this lesson we're going to talk about:
+
+* Ordering of resources.
+* How to have a service refresh if a resource changes.
+* And talk about the very important Package | File | Service design pattern.
+
+Resource_Relationships/Res_Rel_overview.md:
+
+* As we mentioned yesterday, Puppet is a declarative programming language.
+* We declare a desired state, rather than the sequence of steps needed to bring about the desired state.
+* One consequence of this is, the order in which changes to resources are applied is fundamentally non-deterministic.
+
+(Give the example of /tmp/foo with /tmp/{a,b,c,d,e}.)
+
+* On the other hand, the code is certainly *parsed* in the order in which it's written.
+
+(Give example of /tmp/foo with a variable before and after it's used.)
+
+Resource_Relationships/meta.md:
+
+So in the example I've shown you the order isn't important.
+
+But let's suppose it does matter.  Suppose my boss is a control freak and says it's unacceptable to create 5 files a, b, c, d, e if you're not going to create them in order.
+
+To deal with this situation, Puppet provides four 'metaparameters' that allow us to impose ordering.
+
+Resource_Relationships/require.md:
+
+The first of these is 'require'.
+
+Suppose we need changes to the green resource in this diagram to always be applied before the orange resource.
+
+We can say that the orange resource 'requires' changes to the green resource to have already been applied.
+
+(Show how you can order the 5 files using require.)
+
+Resource_Relationships/reference.md:
+
+Did anyone notice that the first letter of 'Package' was capitalized?
+
+Resource_Relationships/before.md:
+
+Another way of doing the same thing is 'before'.
+
+Suppose we don't want to say that changes to the orange resource 'require' changes to the green resource.
+
+Suppose instead we want to think about this the other way around, and say that changes to the 'orange' resource must come 'before' the green resource.
+
+(Refactor the file example.)
+
+Resource_Relationships/subscribe_notify.md:
+
+A different kind of relationship exists when a service needs to refresh after a change to a file.
+
+Suppose we change the sshd_config file.  We need to refresh the sshd service.
+
+Depending on what the service is the refresh behavior is different.  So a change to the sshd config file leads to a service refresh; a change to an Apache config file leads to a service restart.  Puppet mostly figures all this out internally.
+
+Resource_Relationships/subscribe.md:
+
+If the orange resource needs to refresh when the green resource changes, we say the orange resource 'subscribes' to the green resource.
+
+Resource_Relationships/PFS_overview.md:
+
+One of the most common situations encountered when writing Puppet modules is a need to, firstly, install a package; then edit or install a configuration file; and then start a service.
+
+We refer to this as the 'Package | File | Service' pattern, and it's the bread and butter of puppet code writing if you like.
+
 Defined_Resources/Objectives.md:
 
 As in other languages, we try to avoid repeated code defining macros or functions or procedures or subroutines, and in Puppet we have "defined resources" or "defined types".
