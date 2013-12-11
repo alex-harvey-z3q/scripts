@@ -17,7 +17,7 @@ my %data = ();
 
 my $slide;
 
-print 'reading $notes ';
+print "reading $notes ";
 open NOTES, "<$notes" or die "open: $! ($notes)";
 while (<NOTES>) {
     if ($. == 0 and !m#/.*\.md:#) {
