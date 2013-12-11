@@ -819,18 +819,47 @@ We refer to this as the 'Package | File | Service' pattern, and it's the bread a
 
 Defined_Resources/Objectives.md:
 
-As in other languages, we try to avoid repeated code defining macros or functions or procedures or subroutines, and in Puppet we have "defined resources" or "defined types".
+* We're going to talk about defined types now.
+* Before we do, however, I want to write a code example.
 
-Defined_Resources/all_together.md:
+(Show the example of five files again.  Extend to eight to bring home the point. Ask the students what's wrong with the code.)
 
-Now that we have defined our vhost type we can apply it as many times as we like on the same node, and this will save us time and avoid errors.
+(Go to the next slide before showing the answer.)
+
+Defined_Resources/overview.md:
+
+* We need a general way to deal with repeated code.
+* In other languages we have macros or functions or procedures.
+
+(Read the three bullets.)
+
+(Now finish the example using a defined type.)
 
 Defined_Resources/example.md:
 
+(Find out how many students actually understand what Apache vhosts are.)
+
 * Here is a more complicated example.
 * Imagine lots of Apache conf files that depend on a number of variables.
-* Note that most of these variables will be used inside the ERB template, so we can't see them here.
 * Also notice how we have used the magic variable $name in the file title.
+
+(Read this point later, when we return to this slide.)
+
+* Note that most of these variables will be used inside the ERB template, so we can't see them here.
+
+(Explain $name, and return to the muppets example.)
+
+Defined_Resources/uniqueness.md:
+
+* A perhaps surprising aspect of defined types is the names of resources inside them are not protected.
+* (Go back to three muppets example and change the title to 'foo'.)
+* So in the apache example we're using $name in the name of the conf file, and that guarantees its uniqueness.
+
+Defined_Resources/with_template.md:
+
+(go back two slides and ask students to think about what all the variables are for.)
+
+Point out that the variables passed in this example are used inside the template.
 
 Defined_Resources/module_structure.md:
 
@@ -839,20 +868,31 @@ Defined_Resources/module_structure.md:
 * (example) So if we want to define a type 'apache::vhost' in our apache module, it will be inside file apache/manifests/vhost.pp.
 Is everyone clear about this?
 
-Defined_Resources/overview.md:
+Defined_Resources/all_together.md:
 
-* (start with example of four file resources /tmp/miss_piggy, /tmp/kermit, /tmp/fozzie_bear, /tmp/beaker.)
-* This saves time, abstracts away complexity and reduces error.
+Now that we have defined our vhost type we can apply it as many times as we like on the same node, and this will save us time and avoid errors.
 
-Defined_Resources/uniqueness.md:
+Forge/Forge_intro.md:
 
-* A perhaps surprising aspect of defined types is the names of resources inside them are not protected.
-* (Go back to three files example using a title 'foo'.)
-* So in the apahce example we're using $name in the name of the conf file.
+Puppet Forge is at https://forge.puppetlabs.com/, and go there.
 
-Defined_Resources/with_template.md:
+(point out the download count is now 65,000, compared to 20,000 on the slide.)
 
-Point out that the variables passed in this example are used inside the template.
+(click to download.)
+
+Forge/Face_overview.md:
+
+Let's talk about the Module Tool then.
+
+(read slide.)
+
+Forge/list.md:
+
+(demo the actual command on the master.)
+
+Forge/search.md:
+
+(repeat the search and relate it to what we saw in the web page.)
 
 Templates/Objectives.md:
 
