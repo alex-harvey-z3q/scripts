@@ -3,10 +3,21 @@
 use strict;
 use warnings;
 
+my $courseware_dir = "$ENV{HOME}/git/courseware-fundamentals";
+
 my $notes = $ARGV[0] ? $ARGV[0] : 'notes.txt';
 $notes eq '-h' and usage();
 
-my $courseware_dir = "$ENV{HOME}/git/courseware-fundamentals";
+if (! -e $notes) {
+    print "file not found: $notes\n";
+    usage();
+}
+
+if (! -e $courseware_dir) {
+    print "expected courseware-fundamentals to be checked out ";
+    print "at $courseware_dir\n";
+    exit 1;
+}
 
 my %data = ();
 
@@ -62,8 +73,6 @@ sub slide_exists {
     my $slide = shift;
     if (! -e $slide) {
         print "slide '$slide' not found, aborting\n";
-        print "\n";
-        print "(Make sure this script is run from the courseware-fundamentals directory.)\n";
     }
     return (-e $slide);
 }
