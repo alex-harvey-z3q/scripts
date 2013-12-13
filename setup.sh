@@ -10,7 +10,6 @@ UBUNTU_DIR=puppet-ubuntu-$DATE
 CENTOS_VMX=centos-6.3-pe-3.0.1.vmx
 UBUNTU_VMX=ubuntu-12.04.1-pe-3.0.0.vmx
 SHOWOFF_DIR=$HOME/git/courseware-fundamentals
-IP=$(ifconfig en0 |awk '$1 == "inet" {print $2}')
 
 # unzip images.
 mkdir $MASTER_DIR
