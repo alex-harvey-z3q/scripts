@@ -1,0 +1,902 @@
+Course_Overview/Course_Intro.md:
+
+* (good morning, I am ..., email address)
+* I recently joined Puppet Labs as a PSE.  Prior to this I rolled out puppet to manage a large fleet of commercial Unix systems.
+* (introduce Brett)
+* (Please ask questions) Questions help you learn and help others learn.
+* (fire escapes and toilets)
+* (lunch and breaks)
+* (introductions)
+
+Course_Overview/Course_Objectives.md:
+
+The course is intended for system administrators and developers who
+want a grounding in the fundamentals of the Puppet language and best practices.
+
+Course_Overview/Course_Overview.md:
+
+In this course you will (among other things):
+
+* learn to write puppet modules
+* learn how to test those modules
+* learn how to use the Enterprise Console
+* learn about MCollective / Live Management
+* and much more...
+
+Course_Overview/Course_Agenda_1.md:
+
+On day #1 we intend to cover:
+
+* A general overview of Puppet
+* Some basic concepts
+* Our classroom environment
+* The Puppet Master and Agent roles
+* We will write some simple modules and classes
+* And we will learn about classification - applying classes to nodes
+
+Course_Overview/Course_Agenda_2.md:
+
+On day #2 we will look at:
+
+* Resources also known as types or resource types
+* Chaining or ordering resources
+* We will look at language constructs - if, else, case statements and so on
+* How to add dynamic content to files using ERB templates
+* And defined resources
+
+Course_Overview/Course_Agenda_3.md:
+
+And on day #3 we will look at:
+
+* The puppet forge
+* Advanced classes - class inheritance and parameterized classes
+* Report handlers
+* Live Management and MCollective
+* Data separation using Hiera
+* And then we'll have the Capstone lab, where we try to put everything together and build a Wordpress server.
+
+About_Puppet/Objectives.md:
+
+In this lesson we will:
+
+* Identify the challenges of managing infrastructure at scale.
+* Talk about how Puppet overcomes these challenges.
+* And we'll look at the community resources available to you.
+
+(ignore last bullet.)
+
+About_Puppet/About_Puppet.md:
+ 
+* Luke Kanies wrote Puppet in 2002, after having spent a lot of time doing CFengine consulting.
+* He had become frustrated with CFengine and was finding it hard to contribute back to the CFengine project.
+* In 2003 he converted his consulting company to Reductive Labs and later in 2005 founded Puppet Labs.
+* In 2011 Puppet Labs released its first commercial product, Puppet Enterprise.
+* (now read last 5 bullets) Now we have: over 1000 forge modules; over 6000 active community members; over 20000 users; and some sites doing more than 50000 nodes.
+* Support for all major linuxes, BSDs, Windows, Solaris, AIX, and Mac OS X.
+
+About_Puppet/Puppet_Customers.md:
+
+* Here are some of our customers.
+* We also have a lot of customers in Australia.
+* You may be surprised to know that Sydney is one of the biggest consumers of Puppet Fundamentals courses in the world.
+* Customers in Sydney and Australia include the big four banks, the Telcos, Federal Government departments, and Universities.
+
+About_Puppet/Current_State.md:
+
+Manually configure:
+
+* (building SGI O2 workstations, build work instruction, boss who said don't make mistakes, who never makes a mistake?  Unfortunately, I did make mistakes.  Much time wasted.)
+
+Golden images:
+
+* (To save time, the golden image, e.g. Norton's Ghost. Problems, hardware incompatibility, "configuration drift".)
+
+Custom scripts:
+
+* (Eventually got lazy, wrote scripts to automate stuff.  At the time believed these scripts were really cool.  Problems, next guy rewrote my scripts, didn't scale beyond the problem they were designed to solve.)
+
+All-or-nothing software packages:
+
+* I'm meant to talk about our big competitors like BMC, IBM Tivoli, Opsware, but I don't think anyone cares about these options.
+
+About_Puppet/Introducing_Puppet.md:
+
+With Puppet we can:
+
+* Increase our productivity (spend more time on interesting work, less time fighting fires).
+* Do provisioning in minutes instead of weeks (who's ever had to tell a customer that it'll take several weeks to install a server?)
+* Puppet eliminates configuration drift.
+* Puppet brings visibility to configuration and changes.
+* Cuts the software release cycle down from weeks and months to days and hours.
+
+About_Puppet/Introducing_PE.md:
+
+Puppet Enterprise adds:
+
+* Convenient installer - the components of Puppet are installed and configured automatically.
+* The Enterprise Console - honestly, it's crap.
+* Orchestration - Puppet Enterprise automatically configures MCollective (and anyone who's tried to do it using the open source product will know it's a pain).
+* VMware cloud provisioner - only available in PE.
+
+About_Puppet/PE_Stack.md:
+
+Here are the components of the PE stack.
+
+* The Puppet Master and Agent
+* The Puppet module tool
+* The Enterprise Console
+* That's integrated with MCollective to give you Live Management
+* It's automatically configured to scale
+* Behind an apache load balancer with Passenger and Rack/Rails
+* All of our software is fully tested on all supported platforms
+* And best of all you get Enterprise support
+
+About_Puppet/Resources.md:
+
+Services:
+
+* Service offerings include: Bootstrap, Quickstart, Code audits, Customised training
+
+Support:
+
+* Two levels of support available - standard and premium.
+* See <http://puppetlabs.com/services/support-plans/> for more info
+Training.
+* Aside from this Puppet Fundamentals course I recommend you all come back some time and do the Advanced course and Extending Puppet using Ruby.
+
+About_Puppet/How_Puppet_Works.md:
+
+* (define) We define the desired state of our systems.
+* (simulate) Simulate proposed changes.
+* (enforce) Enforce the desired state automatically.
+* (report) Report back on any changes.
+ 
+About_Puppet/Puppet_Works_Define2.md:
+
+* Here is an example of some Puppet code.
+* Can anyone guess what that does?
+* Does anyone feel they couldn't guess what that does?
+
+About_Puppet/Data_Flow_for_Nodes.md:
+
+Let's have a look at a high level at the data flow in Puppet:
+
+* A agent sends facts and requests its so-called "catalog"
+* The master responds by combining those facts with your manifest code to compile a catalog.
+* The agent applies that catalog and sends back a report.
+* Optionally, that report is sent on to a report handler.
+
+Any questions so far?
+
+Concepts/Objectives.md:
+
+(SKIP this.)
+
+Concepts/the_problem.md:
+
+(Read this slide from the top, slowly, word for word.)
+
+Concepts/traditional_solutions.md:
+
+We have the following tools that can help us.
+
+Concepts/traditional_problems.md:
+
+Let's imagine we have 200 servers and six different versions of Linux.
+
+* Who knows what the difference is between useradd and adduser?
+* Who knows what superadduser is?
+* Who knows what -l and/or the -L option?
+* And what happens if I run useradd twice?
+
+Concepts/shell_script.md:
+
+Okay, so sooner or later you're going to get sick of adding users and you'll write something like this:
+ 
+* Who thinks this is a well-written script?
+* Who thinks it's terrible?
+* Who can understand it?
+* Can anyone see any obvious problems?
+
+(Go to next slide to discuss problems.)
+
+Concepts/complications.md:
+
+(Read this slide word for word slowly from the top.)
+
+Concepts/puppet_way.md:
+
+Puppet solves all of these problems we've been discussing.
+ 
+(Go to next slide before discussing the code.)
+
+Concepts/describe_state.md:
+
+* This little piece of code describes a "desired state".
+* Now imagine that the actual state is different - suppose the GID is "staff" and home is wrong.
+* We refer to this situation as "configuration drift".  We say the actual configuration has drifted from the desired configuration.
+* "Convergence" is the process of applying the desired state over the actual state.
+* AND the cool thing is Puppet already knows HOW to change the state to the desired state.
+
+Concepts/drift_graphic.md:
+
+These convergence actions are then reported.
+
+(Skip the next slide.)
+
+Concepts/infrastructure_as_code.md:
+
+* We like to say that "Puppet code is executable documentation".
+* If the code looks like this we probably don't need a man page to go with it.
+* It's "descriptive, straightforward, transparent".  I'm really talking this up!
+
+Concepts/idempotent.md:
+
+Idempotence.  (Read the definition out.)
+
+Examples of commands that are idempotent:
+
+* ls
+* touch /reconfigure
+
+Examples of commands that are not idempotent:
+
+* logger -p
+* mkfs
+
+Understanding idempotency is important when writing Puppet code.  We'll come back to this throughout the course.
+
+Concepts/language_overview.md:
+
+* The basic building blocks of Puppet code are "resources".
+* Resources are also known as "types" or "resource types".
+
+Concepts/example.md:
+
+Resources contain "attributes" that we can set. (Skip straight on.)
+
+Concepts/declarations.md:
+
+A resource declaration is made up of:
+
+* A type (user)
+* A title (elmo)
+* And attribute -> value pairs.
+* And also, note that the titles need to be unique.
+
+Concepts/imperative.md:
+
+* Puppet is a declarative programming language.
+* Other declarative languages include:  Makefiles; HTML; Veritas Cluster Server main.cf
+* A declarative language 'declares' a desired state with specifying how that state is achieved.
+* Declarative programming is to be constrasted with imperative programming languages.
+* Imperative languages include: shell, C, Perl, Python and Ruby.
+
+Concepts/abstraction.md:
+
+* Resources are abstracted away from the implementation detail of platform-specific providers.
+* This means Puppet is smart enough to guess that if you ask it to install a package on Red Hat or Ubuntu that it should use either yum or apt-get.
+
+Concepts/RAL_overview.md:
+
+* Thus we say that Puppet provides a 'Resource Abstraction Layer' or RAL.
+
+Concepts/type_provider.md:
+
+* So the resource abstraction layer exposes resource types ...
+
+Concepts/providers.md:
+
+* ... whereas it hides the detail of underlying "providers".
+
+Concepts/package.md:
+
+And here are the source files for the underlying platform-specific 'package' providers.
+
+Concepts/dag.md:
+
+* A feature of Puppet that beginners often struggle with is that of "resource ordering".
+* Unlike in imperative languages like shell, the code isn't necessarily executed in the order that it's written.
+* Instead, resources declarations are applied based on explicit and implicit dependencies between resources.
+* We'll look at this in much greater detail later in the course.
+
+Any questions?
+
+Classroom_Setup/Objectives.md:
+
+In this lesson we're going to
+
+* Learn how to install the Puppet Enterprise puppet master and client.
+* Learn about facts and Facter.
+* Learn about the 'puppet resource' command.
+* Learn a basic development workflow using GIT that we'll be using throughout this course.
+
+Classroom_Setup/Puppet_Master.md:
+
+Our Puppet Master is going to:
+
+* Compile and serve catalogs to agents; it will run MCollective; it will run a report handler; and it will run a revision control system, namely GIT.
+
+Now, I'm about to show you all how to install the Puppet Master.  The inputs to this process are:
+
+* Certname; DNS name and alias; Login information for the console
+
+Also, we need to ensure that the time is synced.
+
+Note that problems with time sync and DNS resolution account for many of the problems that get raised with Support.
+
+Classroom_Setup/demo1.md:
+
+Doco:
+
+* https://github.com/puppet-training/courseware-fundamentals
+* HOWTO Demo#1 Installing Puppet Master
+* NOTE: the 'puppet agent -t' step is missing from the end of Lab 3.2!!
+
+Classroom_Setup/Facter_overview.md:
+
+* Puppet uses a program called 'Facter' that returns so-called 'facts' about client nodes.
+* Facter returns a list of key value pairs, that is, the facts and their values.
+
+Classroom_Setup/Resource_overview.md:
+
+* The 'puppet resource' command is a very useful tool that returns resource information about the host formatted as Puppet Manifest code.
+* (Read the second bullet.)
+
+Classroom_Setup/query.md:
+
+* Here's an example.
+* So 'puppet resource user elvis' returns 'ensure absent', the current state of the 'elvis' user.
+* Another way of thinking about it is it returns the Puppet Code that is needed to enforce the state of this system as it is now.
+
+Classroom_Setup/query_all.md:
+
+If you run 'puppet resource user', you will see all of the users on your system formatted in puppet manifest code.
+
+Classroom_Setup/Agent_Master_Certs.md:
+
+* Puppet uses SSL to facilitate secure Agent-Master communication.
+* When you all typed 'puppet agent -t' in the lab, a certificate signing request was sent off to the master.  The master is now waiting for me to sign them all.
+
+Classroom_Setup/demo2.md:
+
+* Okay we have two ways of signing the certificates.
+* 1)  Go to https://masterip/, and show how you could sign all the certs.
+* 2)  From the command line issue 'puppet cert sign --all'
+
+Classroom_Setup/vcs_overview.md:
+
+A version control workflow provides us with:
+
+* A way of making changes safely.
+* A method for collaborating with others.
+* A log of your change history.
+* A way of reverting changes.
+
+Classroom_Setup/vcs_workflow.md:
+
+Here is the process we'll follow.
+
+* We update our working directory - sync with the upstream repo in other words.
+* Then we do some development.
+* Then we run some validation commands - syntax validation, and so on.
+* We test our code by running tests.
+* If we're satisfied, we push our code back to the Master repo.
+* Then test our code in a development environment.
+
+Classroom_Setup/Classroom_Environment.md:
+
+This diagram represents our revision control environment.
+
+* On the master you all have home directories in /home.
+* On the agent you'll do your development in /root/puppetcode, and this will be synced to the master when you run 'git push'.
+
+Classroom_Setup/git_mini_tutorial.md:
+
+We're going to spend a few slides talking about GIT.
+
+* It is not mandatory that you use GIT.  At Puppet Labs we believe GIT is the best VCS out therebut if you already have, say, SVN set up and working, it may be that SVN is the right choice for you.  Don't worry, Puppet works fine with any VCS.
+
+About GIT:
+
+* It was developed in 2005 by Linus Torvalds as a replacement for system they were using for linux kernel development.
+* It was designed to be fast, distributed, free, and capable of handling several hundred commits per day, as were the needs of the linux kernel developers.  
+* Its main advantage over SVN is that there is no need for a network, no need to check out a revision of code, which is a slow operating, and branching and merging is much easier and faster.
+* I haven't personally ever heard anyone who has used GIT say that they don't like it.
+
+On the following slides we'll cover a few commands that we'll use in the course.
+
+Classroom_Setup/git_mini_tutorial_status.md:
+
+Git status shows us the status of the working directory.
+
+Classroom_Setup/git_mini_tutorial_add.md:
+
+Git add stages changes in a file or files ready to be committed.
+
+Classroom_Setup/git_mini_tutorial_commit.md:
+
+* Git commit commits your staged changes and prompts you to add a commit message.
+* You can also add your commit message on the command line using -m.
+
+Classroom_Setup/git_mini_tutorial_distributed.md:
+
+Here we can see the distributed nature of GIT.  
+
+* There's no single point of failure because every copy of the respository is equal.
+* And because I have the whole repository locally, everything is fast.
+
+Classroom_Setup/git_mini_tutorial_push.md:
+
+And finally, git push is the command we use to push our local changes to a remote repo.
+
+* Note that 'master' isn't referring to the 'puppet master' but to the master branch of the repository.
+
+Classroom_Setup/vcs_workflow_git.md:
+
+Here's a summary of the GIT workflow:
+
+* We pull any changes from the upstream repository using 'git pull'.
+* Do some development.
+* Add changes ready for commit using 'git add'.
+* Commit changes using 'git commit'.
+* Push our changes back using 'git push'.
+* And then we test our code in a development environment.
+
+Classroom_Setup/git_mini_tutorial_more.md:
+
+Here are some more useful GIT commands:
+
+* Git diff will show you a diff between two changes.
+* Git log shows you the log of changes.
+* Git show can show you a specific change.
+* Git blame is a useful command for finding out which change broke something.
+* Git branch and git checkout are used for creating and switching branches.
+
+If you want to know more I thoroughly recommend that you read the online GIT book.  It takes a while to learn GIT but it's well worth the effort.
+
+Roles/Objectives.md:
+
+We're going to discuss the two roles of Puppet Master and Puppet Agent that the Puppet executable can run it.
+
+Roles/configuration_management.md:
+
+This slide shows a Puppet Master interacting with Puppet Agents - isn't it pretty?  I don't have much to say about it really.
+
+Roles/Agent_overview.md:
+
+The puppet 'agent' runs on all puppet-managed nodes.  (just read from the slide slowly.)
+
+Roles/puppet_conf_example.md:
+
+* The configuration file for both the Puppet Master and Agent is /etc/puppetlabs/puppet.conf (and in open source puppet it's /etc/puppet/puppet.conf).
+* This very simple configuration just sets the var, log and run dir, and sets the certname and puppet master hostname.
+
+Roles/Agent_cl_options.md:
+
+Here are some command line arguments that are worth knowing.
+
+* --test is the same as -t and it's an abbreviation for --no-daemonize, --verbose and --onetime.  That means "don't background as a daemon, print log information and just run once."
+* --noop, --debug
+* --environment allows you to pretend you're in a different environment, e.g. --environment prod would give you the prod version of puppet code.
+* --configprint - we've seen this - print configuration options.
+* --genconfig - prints all configuration options.
+
+Roles/Master_overview.md:
+
+Meanwhile the puppet master runs on the central server (or perhaps in a server farm).  (read the rest from the slide slowly.)
+
+Roles/client_arch.md:
+
+Here's a pretty picture for the visual thinkers.
+
+* So we have SSL encryption.
+* The agent sends facts to the master.
+* The master compiles a catalog by incorporating facts, manifests, files and templates.
+* The agent receives the catalog and applies it by using the resource abstraction layer,
+* ...behind which are resource types adn providers.
+
+Roles/Console_overview.md:
+
+The Enterprise Console provides a GUI that can do some cool stuff.  (We're about to use it in the next lab so I might skip quickly over these screenshots.)
+
+Roles/Cert_overview.md:
+
+Another function of the Puppet Master (or at least *a* puppet master) is to serve as a certificate authority.  (As we've seen, a signed certificate is needed to authenticate each agent before the master will talk to it.)
+
+Roles/Cert_agent.md:
+
+When the agent runs the first time, it:
+
+* generates a new cert.
+* sends a CSR to the master.
+* the checks every 2 mins for a signed certificate.
+
+Unless... autosigning is enabled.
+
+Roles/Cert_list.md:
+
+Here are some commands you'll want to know:
+
+* puppet cert list - by default, lists certificates that are waiting to be signed.
+* (maybe demo this.)
+
+Roles/Cert_list_all.md:
+
+If you want to see all certificates including signed ones, add --all.
+
+Roles/Cert_sign.md:
+
+* To sign a certificate use 'puppet cert sign'.
+* To revoke a certificate (although I can't really think of a use-case for revoking certs).
+* To delete a certificate (usually when it's all gone horribly wrong and you've run out of patience and decide just to blow everything away and start again).
+
+Roles/Cert_generate.md:
+
+* Sometimes customers want to generate already-signed certificates - usually in order to fully automate the provisioning.
+* If so, use puppet cert generate.
+* (In this case you'll need to transfer them to the client somehow.)
+
+Roles/CA_Console.md:
+
+Another way of signing certificates is to use the Enterprise Console (unless you have an old version.)
+
+Roles/Node_Requests.md:
+
+... and if you log into the console, you'll see the 'node requests' button in the top right corner.
+
+Roles/Approve_Reject.md:
+
+... which gives you the option to sign all, reject all, or sign/reject individual certs.
+
+Roles/Cert_demo.md:
+
+Now I'm going to show you a demonstration of adding a Ubuntu client to the classroom environment.
+
+Modules_and_Classes/Objectives.md:
+
+Now we're going to start actually looking at some code.  In this lesson we're going to:
+
+* learn about modules and classes.
+* describe the directory structure of a module.
+* talk about WHY we break up our code into modules.
+* talk about the autoloader.
+* and finally, get some terminology straight: defining vs declaring classes.
+
+Modules_and_Classes/Classes_overview.md:
+
+* Who here has done some object-oriented programming?  
+* It's important to be aware that Puppet borrows terminology from object-oriented languages - classes, modules, attributes, and so on - but it's NOT an object-oriented language in any true sense.
+
+A CLASS is just a container for resources - a way of grouping resources together as a unit.  And that's all it is.
+
+Who wants to tell me what the code on this slide does?
+
+Modules_and_Classes/stacking_classes_together.md:
+
+By grouping our resources together as classes, we can move to a higher level of abstraction and say that a node is collection of classes.
+
+So who can tell me what node 'oscar' is from the slide?
+
+Modules_and_Classes/classes_are_reusable.md:
+
+* Another advantage of defining collections of resources is that we can reuse our code.
+* Thus, we can have the same ssh class applied to every one of our nodes.
+
+Modules_and_Classes/classes_are_singleton.md:
+
+* Another OO concept we've borrowed is that of the "singleton".
+* By a "singleton", we mean that a class can only be applied once-per-node.
+* So here's an example of what NOT to do.
+
+Modules_and_Classes/Modules_overview.md:
+
+Meanwhile modules are directories with a pre-defined structure that contain our classes, files, templates, tests, plugins and more.
+
+The pre-defined structure enables:
+
+* auto-loading of classes (which we'll talk about in a moment).
+* the serving of files from our modules.
+* the delivery of extensions - custom facts and providers.
+* and we can easily share our modules with others (e.g. by uploading them to the Puppet Forge).
+
+Modules_and_Classes/auto_loading.md:
+
+Has anyone here used a very old version of Puppet?
+
+* import is a legacy feature that you shouldn't use.
+* in the old days, we loaded our manifests by using 'import *.pp'.
+* this didn't scale so well.
+* didn't lend itself to code sharing.
+* long story short - you should never need to use 'import'.
+
+Modules_and_Classes/auto_loading_2.md:
+
+The right way to import your modules is to leverage the auto-loader.
+
+(demo puppet agent --configprint modulepath.)
+
+Puppet automatically searches all of its module paths and loads modules as required.
+
+Modules_and_Classes/auto_loading_3.md:
+
+Now let's look at the directory structure in a bit more detail.
+
+* If you have a module called 'apache' then Puppet expects to find the class 'apache' inside a file $modulepath/apache/manifests/init.pp.
+* If you have a module called 'apache' and a class called 'apache::mod', puppet expects to find it in $modulepath/apache/manifests/mod.pp.
+* If you have a module called 'apache' and a class called 'apache::mod::php', puppet expects to find it in $modulepath/apache/manifests/mod/php.pp.
+
+Who wants to tell me where we'd find a class foo::bar::baz?
+
+Modules_and_Classes/define_and_declare.md:
+
+Some terminology:
+
+* defining a class is what we just did in the lab.  You have already have the sense that we've written some code, but it hasn't actually done anything.
+* declaring a class is like running or applying it.  We declare a class by "including" it in a node definition.  We can also use the class syntax.
+
+Modules_and_Classes/declaring_2.md:
+
+(refer to slide.)
+
+* So this is "defining" an ssh class.
+* ... and this is "declaring" it.
+
+Modules_and_Classes/smoke_tests.md:
+
+* Another directory inside your module is the "tests" directory.  We put our tests in there.
+* If you come back for the Advanced class, we're going to look at how to write proper unit tests.
+* Today we're just going to look at the simplest test: the "smoke" test.
+* The smoke test come from circuit designers.  If you build a circuit board and plug it in and no smoke comes out, it was assumed that it probably worked.
+* In Puppet a smoke test is basically just a file, tests/init.pp, that contains just a single "include" line.
+
+Modules_and_Classes/Apply_overview.md:
+
+We then use the "puppet apply" executable to run that test.
+
+So what this diagram is saying is that the Puppet agent is also capable of compiling the catalog for the sake of running our test.
+
+Modules_and_Classes/applying_smoke_tests.md:
+
+Here is how we do it:
+
+* Type 'puppet apply tests/init.pp' and puppet will apply the code you've just written.
+
+Modules_and_Classes/Apply_noop.md:
+
+* However you will probably want to start by using the --noop option.
+* Puppet will tell you what it would do without actually doing it.
+
+Modules_and_Classes/Apply_noop2.md:
+
+This slide shows you the output of running 'puppet apply --noop'.
+
+NOTE we also have a noop metaparameter which can be used to turn on --noop for a single resource.
+
+Can anyone have a guess at why we might write code like this?
+
+Modules_and_Classes/Group_example.md:
+
+In a moment we're going to extend our module and to do that we need to know about the "group" resource.
+
+(Read from the slide.)
+
+Modules_and_Classes/Group_spec.md:
+
+And if you want to know more you can type 'puppet describe group' and perhaps pipe that into less.
+
+Or, you can type 'puppet group type' into google and you'll get the online documentation.
+
+Classification/Objectives.md:
+
+In this lesson we're going to look at 'node classification'.
+
+* Note that by 'classification' we mean 'class-ification' - the applying of classes to nodes.
+* We will look at the site.pp method of node classification.
+* ...and we'll also look at how we can use the Enterprise Console as a node classifier.
+
+Classification/Site-pp_Nodes.md:
+
+In the original version of Puppet, the global manifest was the site.pp file.
+
+* If you have a small site - less than 50 nodes perhaps - then you'll probably find that even today the site.pp is an adequate method of adding classes to nodes.
+* If your site is much bigger, however, the site.pp doesn't scale so well and you'll look at other options for node classification.
+* In Puppet Enterprise, your site.pp is by default at /etc/puppetlabs/puppet/manifests/site.pp.
+
+Classification/Site-pp_Nodes.md:
+
+* Node definitions look very similar to class definitions, resource definitions, and so on.
+* Typically, a node definition is just a list of include statements.
+
+Classification/Nodes_regex.md:
+
+It is possible to use regular expressions to define a group of nodes.
+
+* So who is good at regular expressions and can tell me what this means?
+* Right, so we might have lots of frontend web servers named web001, web002 etc and they can all be classified using this regular expression.
+* If you're going to use regular expressions (and you're probably not :), then make sure you know what you're doing.  You don't want two different regular expressions to match the same node, for instance.
+* E.g. don't use the regular expression ".*" :)
+
+Classification/Nodes_default.md:
+
+* Now I need to be honest here and say that this slide is actually wrong.
+* If you're interested you can google 'puppet issue 3118' and you'll see that a bug has been open about this for a long time.
+* Luke's original intention - perhaps his original code, I don't know - is what is documented in this slide.
+* In actual fact the default node is not applied when no other declaration matches - it's ALWAYS applied.
+* There is debate amongst our developers as to whether this is a bug or a feature.  Luke says it's a bug but my feeling is it's never going to get fixed, because we have customers who are rellying on the buggy behaviour as a feature.
+* My advice - if you use the default node - assume that it's going to be applied to EVERY node.
+
+Classification/demo_site_pp.md:
+
+Filebucket is a special resource type for where to backup old file content to.
+
+Add a notify to default node.
+
+Classification/console_classes.md:
+
+Now we're going to talk about using the Enterprise Console to classify nodes instead.
+
+These slides show us how to do it.
+
+Classification/console_node.md:
+
+And here is our node definition in the Console.  Note that this node defition in the console is equivalent to this piece of site.pp code.
+
+Resource_Relationships/Objectives.md:
+
+In this lesson we're going to talk about:
+
+* Ordering of resources.
+* How to have a service refresh if a resource changes.
+* And talk about the very important Package | File | Service design pattern.
+
+Resource_Relationships/Res_Rel_overview.md:
+
+* As we mentioned yesterday, Puppet is a declarative programming language.
+* We declare a desired state, rather than the sequence of steps needed to bring about the desired state.
+* One consequence of this is, the order in which changes to resources are applied is fundamentally non-deterministic.
+
+(Give the example of /tmp/foo with /tmp/{a,b,c,d,e}.)
+
+* On the other hand, the code is certainly *parsed* in the order in which it's written.
+
+(Give example of /tmp/foo with a variable before and after it's used.)
+
+Resource_Relationships/meta.md:
+
+So in the example I've shown you the order isn't important.
+
+But let's suppose it does matter.  Suppose my boss is a control freak and says it's unacceptable to create 5 files a, b, c, d, e if you're not going to create them in order.
+
+To deal with this situation, Puppet provides four 'metaparameters' that allow us to impose ordering.
+
+Resource_Relationships/require.md:
+
+The first of these is 'require'.
+
+Suppose we need changes to the green resource in this diagram to always be applied before the orange resource.
+
+We can say that the orange resource 'requires' changes to the green resource to have already been applied.
+
+(Show how you can order the 5 files using require.)
+
+Resource_Relationships/reference.md:
+
+Did anyone notice that the first letter of 'Package' was capitalized?
+
+Resource_Relationships/before.md:
+
+Another way of doing the same thing is 'before'.
+
+Suppose we don't want to say that changes to the orange resource 'require' changes to the green resource.
+
+Suppose instead we want to think about this the other way around, and say that changes to the 'orange' resource must come 'before' the green resource.
+
+(Refactor the file example.)
+
+Resource_Relationships/subscribe_notify.md:
+
+A different kind of relationship exists when a service needs to refresh after a change to a file.
+
+Suppose we change the sshd_config file.  We need to refresh the sshd service.
+
+Depending on what the service is the refresh behavior is different.  So a change to the sshd config file leads to a service refresh; a change to an Apache config file leads to a service restart.  Puppet mostly figures all this out internally.
+
+Resource_Relationships/subscribe.md:
+
+If the orange resource needs to refresh when the green resource changes, we say the orange resource 'subscribes' to the green resource.
+
+Resource_Relationships/PFS_overview.md:
+
+One of the most common situations encountered when writing Puppet modules is a need to, firstly, install a package; then edit or install a configuration file; and then start a service.
+
+We refer to this as the 'Package | File | Service' pattern, and it's the bread and butter of puppet code writing if you like.
+
+Defined_Resources/Objectives.md:
+
+* We're going to talk about defined types now.
+* Before we do, however, I want to write a code example.
+
+(Show the example of five files again.  Extend to eight to bring home the point. Ask the students what's wrong with the code.)
+
+(Go to the next slide before showing the answer.)
+
+Defined_Resources/overview.md:
+
+* We need a general way to deal with repeated code.
+* In other languages we have macros or functions or procedures.
+
+(Read the three bullets.)
+
+(Now finish the example using a defined type.)
+
+Defined_Resources/example.md:
+
+(Find out how many students actually understand what Apache vhosts are.)
+
+* Here is a more complicated example.
+* Imagine lots of Apache conf files that depend on a number of variables.
+* Also notice how we have used the magic variable $name in the file title.
+
+(Read this point later, when we return to this slide.)
+
+* Note that most of these variables will be used inside the ERB template, so we can't see them here.
+
+(Explain $name, and return to the muppets example.)
+
+Defined_Resources/uniqueness.md:
+
+* A perhaps surprising aspect of defined types is the names of resources inside them are not protected.
+* (Go back to three muppets example and change the title to 'foo'.)
+* So in the apache example we're using $name in the name of the conf file, and that guarantees its uniqueness.
+
+Defined_Resources/with_template.md:
+
+(go back two slides and ask students to think about what all the variables are for.)
+
+Point out that the variables passed in this example are used inside the template.
+
+Defined_Resources/module_structure.md:
+
+* Now let's talk about *where* we define defined types in our module structure.
+* We follow the same convention as with classes.
+* (example) So if we want to define a type 'apache::vhost' in our apache module, it will be inside file apache/manifests/vhost.pp.
+Is everyone clear about this?
+
+Defined_Resources/all_together.md:
+
+Now that we have defined our vhost type we can apply it as many times as we like on the same node, and this will save us time and avoid errors.
+
+Forge/Forge_intro.md:
+
+Puppet Forge is at https://forge.puppetlabs.com/, and go there.
+
+(point out the download count is now 65,000, compared to 20,000 on the slide.)
+
+(click to download.)
+
+Forge/Face_overview.md:
+
+Let's talk about the Module Tool then.
+
+(read slide.)
+
+Forge/list.md:
+
+(demo the actual command on the master.)
+
+Forge/search.md:
+
+(repeat the search and relate it to what we saw in the web page.)
+
+Templates/Objectives.md:
+
+In this lesson we'll talk about:
+* ERB templates, which we use to add dynamic content to files.
+
+Templates/Separation_of_concerns.md:
+
+(Ignore first 3 bullets.)
+ 
+* ERB templates allow us to hide the complexity of dynamic content in files from our manifests.
+* Another benefit is we can update our files without changing the manifests (reduces the likelihood of introducing errors).
