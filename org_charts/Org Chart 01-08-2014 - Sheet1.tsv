@@ -1,0 +1,256 @@
+NAME	REG EE'S	JOB TITLE	# - DEPARTMENT	HOME BASE	SUPERVISOR/MANAGER	Sales & Mktg	Prod Devpt	Cust Success	Corp Support	US-PDX	US, Non-PDX	Non-US
+Kanies, Luke A	X	CEO	100 - Administration						x	x		
+Caswell, Charlotte	X	Executive Assistant	100 - Administration		Kanies, Luke				x	x		
+Johnston, Scott	X	VP Strategy	100 - Administration	 SF, CA/PDX SHARE	Kanies, Luke				x		x	
+Koefoed, Bill 	X	Chief Financial Officer	100 - Administration	Seattle, WA	Kanies, Luke				x		x	
+Crawford, Julie	X	VP of Finance	110 - Accounting		Kanies, Luke				x	x		
+Crosen, Shawon	X	Facilities Specialist	140 - Facilities		Crawford, Julie				x	x		
+Franck, Ann	X	Payroll Specialist	110 - Accounting		Crawford, Julie				x	x		
+Kempton, Scott	X	Finance Manager	110 - Accounting		Crawford, Julie				x	x		
+Moe, Char M	X	Office Manager	140 - Facilities		Crawford, Julie				x	x		
+Dutton, Luke	X	Controller	110 - Accounting		Crawford, Julie				x	x		
+Castleberry, Linda		Billing/Collections Specialist	110 - Accounting		Dutton, Luke				x	x		
+Ryan, Dan	X	GL Accountant	110 - Accounting		Dutton, Luke				x	x		
+Schmitz, Bryan	X	Sr. Revenue Accountant	110 - Accounting		Dutton, Luke				x	x		
+Sinclair, Chris 		Accounts Payables 	110 - Accounting		Dutton, Luke				x	x		
+Kockler, Kate	X	Sales Operations Analyst	110 - Accounting		Crawford, Julie				x	x		
+Osterhaus, Ananda	X	Sales Operations Administrator	110 - Accounting 		Kockler, Kate				x	x		
+Zabaglio, Walter	X	Business Optimization Manager	150 - Business Optimization		Crawford, Julie				x	x		
+Longworth, Tiffany	X	Associate Business Systems Analyst	150 - Business Optimization		Zabaglio, Walter				x	x		
+May, Chris	X	Data Engineer	150 - Business Optimization		Zabaglio, Walter				x	x		
+Weiss, Jeff	X	Technical Operations Engineer	150 - Business Optimization		Zabaglio, Walter				x	x		
+Zuch, Kyoko	X	Sr. Business Systems Analyst	150 - Business Optimization		Zabaglio, Walter				x	x		
+Stepp, Laura	X	VP Human Resources	120 - Human Resources		Kanies, Luke				x	x		
+Amela, Art	X	Sr. Technical Recruiter	120 - Human Resources		Stepp, Laura				x	x		
+Arnold, Kristin	X	HR Specialist	120 - Human Resources		Stepp, Laura				x	x		
+Dickey, Susanne	X	HR Coordinator	120 - Human Resources		Stepp, Laura				x	x		
+Parker, Candy	X	HR Benefits Specialist/Generalist	120 - Human Resources		Stepp, Laura				x	x		
+Tofte, Dani		HR Admin	120 - Human Resources		Stepp, Laura				x	x		
+Webb, Tanya	X	Talent Acquisition Manager	120 - Human Resources		Stepp, Laura				x	x		
+Stein, Brian	X	VP Engineering & Product	200 - Engineering		Kanies, Luke		x			x		
+Armstrong, Aaron	X	(PE) Engineering Manager	200 - Engineering		Stein, Brian 		x			x		
+Barlow, Jeremy	X	Software Engineer	200 - Engineering	Meridian, ID	Armstrong, Aaron		x				x	
+Brezina, Karel	X	Software Developer	200 - Engineering	Plzeň, CZ	Armstrong, Aaron		x					x
+Corcoran, Kevin	X	Software Engineer	200 - Engineering		Armstrong, Aaron		x			x		
+High, Brandon	X	Software Engineer	200 - Engineering	Eugene, OR	Armstrong, Aaron		x				x	
+Hrbek, Filip	X	Software Developer	200 - Engineering	Plzeň, CZ	Armstrong, Aaron		x					x
+Lewis, Nicholas C	X	Software Developer	200 - Engineering		Armstrong, Aaron		x			x		
+Lindboe, Elizabeth (Lizzi)		Engineering Intern	200 - Engineering		Armstrong, Aaron		x			x		
+May, Justin	X	Software Engineer	200 - Engineering		Armstrong, Aaron		x			x		
+Mills, Anderson	X	Software Engineer	200 - Engineering		Armstrong, Aaron		x			x		
+Price, Christopher	X	Software Developer	200 - Engineering		Armstrong, Aaron		x			x		
+Roetker, Andrew		Engineering Intern	200 - Engineering		Armstrong, Aaron		x			x		
+Ruzicka, Michal	X	Software Developer	200 - Engineering	 Rokycany, CZ	Armstrong, Aaron		x					x
+Thatcher, Erica		Engineering Intern	200 - Engineering		Armstrong, Aaron		x			x		
+Williamson, Eric	X	Software Engineer	200 - Engineering		Armstrong, Aaron		x			x		
+Martin, Charles (Max)	X	(PE) Engineering Manager	200 - Engineering		Armstrong, Aaron		x			x		
+Linehan, Ruth	X	Associate Developer	200 - Engineering		Martin, Max		x			x		
+Axthelm, Steve	X	Java Script Applications Engineeer	200 - Engineering		Martin, Max		x			x		
+Smith, Lindsey	X	Software Developer	200 - Engineering		Martin, Max		x			x		
+Smith, Nathaniel	X	Software Developer	200 - Engineering 	Atlanta, GA	Martin, Max		x				x	
+Giridharagopal, Deepak	X	Platform Engineering Director  	200 - Engineering	Denver, CO	Stein, Brian		x				x	
+Barber, Kenneth	X	Software Developer	200 - Engineering        	Haddenham, UK	Giridharagopal, Deepak		x					x
+Carlisle, Patrick	X	Software Engineer	200 - Engineering		Giridharagopal, Deepak		x			x		
+Clamp, Richard	X	Software Engineer	200 - Engineering         	Purley, UK	Giridharagopal, Deepak		x					x
+Hallgren, Thomas		Software Engineer	200 - Engineering	SWEDEN	Giridharagopal, Deepak		x					x
+Huene, Peter	X	Software Engineer	200 - Engineering	San Diego, CA	Giridharagopal, Deepak		x				x	
+Lidral-Porter, Daniel	X	(Platform) Software Engineer	200 - Engineering		Giridharagopal, Deepak		x			x		
+Loubser, Pieter W	X	Software Engineer	200 - Engineering         	 London, UK	Giridharagopal, Deepak		x					x
+McCune, Jeffrey J	X	Software Engineer	200 - Engineering		Giridharagopal, Deepak		x			x		
+Parker, Andy	X	(Platform) Engineering Lead	200 - Engineering 	Seattle, WA	Giridharagopal, Deepak		x				x	
+Partlow, Joshua	X	(Platform) Sr. Software Engineer 	200 - Engineering		Giridharagopal, Deepak		x			x		
+Pittman, Daniel	X	(Razor Team Lead) Sr. Software Engineer	200 - Engineering		Giridharagopal, Deepak		x			x		
+Senior, Ryan	X	Software Developer	200 - Engineering	Chesterfield, MO	Giridharagopal, Deepak		x				x	
+Dreyer, Alex	X	(Forge) Engineering Manager	200 - Engineering		Giridharagopal, Deepak		x			x		
+Haugen, Hunter	X	Software Engineer	200 - Engineering		Dreyer, Alex		x			x		
+Hoge, Christian	X	Software Developer	200 - Engineering		Dreyer, Alex		x			x		
+Penney, Ashley	X	Software Engineer( Puppet Forge Modules)	200 - Engineering	Fitchburg, MA	Dreyer, Alex		x				x	
+Scott, Jesse	X	Software Engineer (Puppet Forge)	200 - Engineering		Dreyer, Alex		x			x		
+van de Bruggen, Pieter	X	Software Developer	200 - Engineering		Dreyer, Alex		x			x		
+Ginsberg, Kylo	X	Principal Engineer	200 - Engineering		Giridharagopal, Deepak		x			x		
+Brown, Ethan	X	Software Engineer	200 - Engineering	Broad Brook, CT	Ginsberg, Kylo		x				x	
+Cooper, Joshua	X	Software Engineer	200 - Engineering		Ginsberg, Kylo		x			x		
+Reynolds, Rob	X	(Platform) Software Engineer	200 - Engineering	Topeka, KS	Ginsberg, Kylo		x				x	
+Thebo, Adrien	X	(Community) Software Engineer 	200 - Engineering		Ginsberg, Kylo		x			x		
+Hussey, Kenn	X	Engineering Project Manager 	200 - Engineering	Ontario, CANADA	Stein, Brian		x					x
+Pio, Heidi	X	Engineering Project Manager	200 - Engineering		Hussey, Kenn		x			x		
+Johansen, Michelle	X	Engineering Project Manager 	200 - Engineering		Hussey, Kenn		x			x		
+Lindberg, Henrik	X	Consulting Engineer	200 - Engineering	Djursholm, SWEDEN	Stein, Brian		x					x
+Lutterkort, David	X	Principal Engineer	200 - Engineering	San Francisco, CA	Stein, Brian		x				x	
+Molina, Libby	X	Front-End Engineer	200 - Engineering		Martin, Max		x			x		
+Wolfe, Nate	X	(PE) Software Developer	200 - Engineering		Armstrong, Aaron		x			x		
+Stahnke, Michael	X	ESO Engineering Director	210 - Engineering Services		Stein, Brian		x			x		
+Raseley, Richard	X	Infrastructure and Tooling Engineer	210 - Engineering Services	Seattle, WA	Stanke, Mike		x				x	
+Maraglia, Dominic	X	Engineering Manager	210 - Engineering Services		Stahnke, Mike		x			x		
+Chamberlain, Alex	X	SQA Engineer	210 - Engineering Services		Margalia, Dominic		x			x		
+Duarte, John	X	SQA Engineer	210 - Engineering Services		Margalia, Dominic		x			x		
+Gard, Ryan	X	SQA Engineer	210 - Engineering Services		Margalia, Dominic		x			x		
+Nodelman, Alice	X	QA Toolsmith	210 - Engineering Services		Margalia, Dominic		x			x		
+Purvine-Riley, Branan	X	QA Engineer	210 - Engineering Services		Margalia, Dominic		x			x		
+Stoller, Justin	X	QA Engineer	210 - Engineering Services		Margalia, Dominic		x			x		
+Vu, Tony	X	SQA Engineer	210 - Engineering Services		Margalia, Dominic		x			x		
+Wall, Kurt	X	SQA Engineer	210 - Engineering Services		Margalia, Dominic		x			x		
+Owens, Matthaus	X	Release Manager	210 - Engineering Services		Stahnke, Mike		x			x		
+Braden, Rob	X	Release Engineer	210 - Engineering Services	Franklin, TN	Owens, Matthaus		x				x	
+McKern, Ryan	X	Release Engineer	210 - Engineering Services		Owens, Matthaus		x			x		
+Mendoza, Moses	X	Release Engineer	210 - Engineering Services		Owens, Matthaus		x			x		
+Stone, Melissa	X	Release Engineer	210 - Engineering Services		Owens, Matthaus		x			x		
+Schneider, Scott	X	QA Engineer	210 - Engineering Services		Stahnke, Mike		x			x		
+Seals, Heath	X	Infrastructure and Tooling Engineer	210 - Engineering Services	Nashville, TN	Stahnke, Mike		x				x	
+Files, Holly	X	Sr. VP of Customer Success	400 - Customer Success		Kanies, Luke			x		x		
+Luchs, Ralph	X	Director of Education	410 - Education 	Loveland, CO	Files, Holly			x			x	
+Ford, Ben	X	Instructional Designer	410 - Education		Luchs, Ralph			x		x		
+Hamilton, Brad	X	Instructional Designer	410 - Education	Athens, OH	Luchs, Ralph			x			x	
+Henner, Kevin		Associate Instructional Designer (Intern)	410 - Education		Luchs, Ralph			x		x		
+Jessup, Klynton	X	Technical Instructor	410 - Education	Cedar City, UT	Luchs, Ralph			x			x	
+Rosa, Jamie	X	Certification Program Manager	410 - Education 	Yucaipa, CA	Luchs, Ralph			x			x	
+Sharma, Carthik	X	Technical Instructor	410 - Education		Luchs, Ralph			x		x		
+Sundberg, Bruce	X	Instructional Designer	410 - Education		Luchs, Ralph			x		x		
+Culver, Monica	X	Director of Professional Services	420 - Professional Services		Files, Holly			x		x		
+Delap, Marcus	X	Professional Services Project Manager	420 - Professional Services	Eugene, OR	Culver, Monica			x			x	
+Good, Amanda	X	Professional Services Coordinator	420 - Professional Services		Culver, Monica			x		x		
+Rodabaugh, Owen	X	Professional Services Manager	420 - Professional Services		Culver, Monica			x		x		
+Beard, Joshua	X	Professional Services Engineer	420 - Professional Services	Rapid City, SD	Rodabaugh, Owen			x			x	
+Crews, Adam	X	Professional Services Engineer	420 - Professional Services 	San Jose, CA	Rodabaugh, Owen			x			x	
+Gwilliam, David	X	Professional Services Engineer	420 - Professional Services		Rodabaugh, Owen			x		x		
+Haber, Terri	X	Professional Services Engineer	420 - Professional Services	Pasadena, CA	Rodabaugh, Owen			x			x	
+Kitson, Greg	X	Professional Services Engineer	420 - Professional Services		Rodabaugh, Owen			x		x		
+Larizza, Gary	X	Professional Services Engineer	420 - Professional Services	Seattle, WA	Rodabaugh, Owen			x			x	
+Malnick, Jeff	X	Professional Services Engineer	420 - Professional Services	Monterey, CA	Rodabaugh, Owen			x			x	
+Sarjeant, Gregory	X	Professional Services Engineer	420 - Professional Services	Chicago, IL	Rodabaugh, Owen			x			x	
+Schuyler, Gabriel	X	Professional Services Engineer	420 - Professional Services	San Diego, CA	Rodabaugh, Owen			x			x	
+Smith, Zack	X	Professional Services Engineer	420 - Professional Services		Rodabaugh, Owen			x		x		
+Valentine, Nathan	X	Professional Services Engineer	420 - Professional Services 	Walnut, CA	Rodabaugh, Owen			x			x	
+Shamow, Eric	X	Professional Services Engineer	420 - Professional Services		Culver, Monica			x		x		
+Spence, Christopher	X	Professional Services Engineering Manager	420 - Professional Services 	Windsor, UK	Culver, Monica			x				x
+Bryant-Moore, David	X	Professional Services Engineer	420 - Professional Services	Cheltenham, UK	Spence, Chris			x				x
+Buxton, Adam	X	Professional Services Engineer	420 - Professional Services	Dunstable, UK	Spence, Chris			x				x
+Geldenhuis, Gerrard	X	Professional Services Engineer	420 - Professional Services	Sutton, UK	Spence, Chris			x				x
+Gray, Brett	X	Professional Services Engineer	420 - Professional Services	Dunlop, AUS	Spence, Chris			x				x
+Harvey, Alex	X	Professional Services Engineer	420 - Professional Services	Sydney, AUS	Spence, Chris			x				x
+Linkin, Thomas	X	Professional Services Engineer	420 - Professional Services	Brick, NJ	Spence, Chris			x			x	
+Meaney, Fiona	X	Professional Services Coordinator	420 - Professional Services	London, UK	Spence, Chris			x				x
+Roddy, Chris	X	Professional Services Engineer	420 - Professional Services	Decatur, GA	Spence, Chris			x			x	
+Sweeny, James	X	Professional Services Engineer	420 - Professional Services 	New York, NY	Spence, Chris			x			x	
+Voges, Federico	X	Professional Services Engineer	420 - Professional Services	London, UK	Spence, Chris			x				x
+Richardson, Amanda	X	Director of Customer Support	430 - Customer Support		Files, Holly			x		x		
+Cottle, Celia	X	Support Engineer	430 - Customer Support		Richardson, Amanda			x		x		
+Johnson, Ken	X	Support Engineer	430 - Customer Support		Richardson, Amanda			x		x		
+Lowder, Lee	X	Support Engineer	430 - Customer Support	Springfield, MO	Richardson, Amanda			x			x	
+Pham, Phillip	X	Support Engineer	430 - Customer Support		Richardson, Amanda			x		x		
+Sharpsteen, Charlie	X	Support Engineer (Open Source)	430 - Customer Support		Richardson, Amanda			x		x		
+Stern, Zachary	X	Support Engineer	430 - Customer Support		Richardson, Amanda			x		x		
+Walker, Nicholas	X	Support Engineer	430 - Customer Support		Richardson, Amanda			x		x		
+Wallace, Jay	X	Support Engineer	430 - Customer Support		Richardson, Amanda			x		x		
+Maddox, Patrick	X	Director of Sales Engineering	440 - Sales Engineering		Files, Holly			x		x		
+Adams, Jeremy 	X	Sales Engineer	440 - Sales Engineering		Maddox, Patrick			x		x		
+Barker, Chris	X	Sales Engineer	440 - Sales Engineering		Maddox, Patrick			x		x		
+Barringer, Nicholas	X	Sales Engineer	440 - Sales Engineering	Hampshire, UK	Maddox, Patrick			x				x
+Hong, John	X	Sales Engineer	440 - Sales Engineering	Bergenfield, NJ	Maddox, Patrick			x			x	
+Metcalf, Chad	X	Sales Engineer	440 - Sales Engineering	San Francisco, CA	Maddox, Patrick			x			x	
+Roberts, David	X	Sales Engineer	440 - Sales Engineering	Austin, TX	Maddox, Patrick			x			x	
+Thwaites, Steven	X	Sales Engineer	440 - Sales Engineering	London, UK	Maddox, Patrick			x				x
+Seebald, Spencer	X	Jr. Sales Engineer	440 - Sales Engineering		Maddox, Patrick			x		x		
+Vandewiele, Reid	X	Sales Engineer	440 - Sales Engineering		Maddox, Patrick			x		x		
+Campbell, Scott K	X	VP of Sales	500 - Sales		Kanies, Luke	x				x		
+Finn, Robert	X	APAC Sales Director	500 - Sales	NSW, Australia	Campbell, Scott	x						x
+Choudhry, Pervaiz	X	VP, North American Field Sales	500 - Sales	Menlo Park, CA	Campbell, Scott	x					x	
+Belmonte, Marlena	X	Field Sales Representative (CHI)	500 - Sales	Chicago, IL	Choudhry, Pervaiz	x					x	
+Elder, Jared	X	Field Sales Representative (ATL)	500 - Sales	LaGrange, GA	Choudhry, Pervaiz	x					x	
+Fishel, Jay	X	Field Sales Representative (TX)	500 - Sales	Dallas, TX	Choudhry, Pervaiz	x					x	
+Joynt, Jim	X	Field Sales Representative (Federal)	500 - Sales	Leesburg, VA	Choudhry, Pervaiz	x					x	
+Lokis, Joseph	X	Field Sales (Northwest)	500 - Sales		Choudhry, Pervaiz	x				x		
+Reich, Benjamin	X	Field Sales Representative (NYC)	500 - Sales 	River Vale, NJ	Choudhry, Pervaiz	x					x	
+Smith, Kyle J	X	Field Sales Representative (Bay Area)	500 - Sales		Choudhry, Pervaiz	x				x		
+Henderson, Joe	X	Account Manager (International)	500 - Sales		Campbell, Scott	x				x		
+Hoang, Amy	X	Account Manager (UK)	500 - Sales 	UK	Campbell, Scott	x						x
+Landau, Steff		Account Rep	500 - Sales	UK	Hoang, Amy	x						x
+Pindoria, Anant		Account Rep	500 - Sales	UK	Hoang, Amy	x						x
+Lake, Brian	X	Director of Inside Sales	500 - Sales		Campbell, Scott	x				x		
+Bhattarai, Shreekar 	X	Account Manager	500 - Sales		Lake, Brian	x				x		
+Britton, Joshua	X	Sales Associate	500 - Sales		Lake, Brian	x				x		
+Damkroger, Matt	X	Account Manager	500 - Sales		Lake, Brian	x				x		
+Grim, Christopher	X	Sales Associate	500 - Sales		Lake, Brian	x				x		
+Jawors, Chad	X	Account Manager	500 - Sales		Lake, Brian	x				x		
+Outhaythip, Arnan	X	Account Manager	500 - Sales		Lake, Brian	x				x		
+Page, Heidi	X	Training Sales Specialist (For East & Europe)	500 - Sales		Lake, Brian	x				x		
+Santilli, Suzi	X	Account Manager	500 - Sales		Lake, Brian	x				x		
+Schmitt, Andy	X	Account Manager (Renewals)	500 - Sales		Lake, Brian	x				x		
+Woodward, Hannah	X	Training Sales Specialist	500 - Sales		Lake, Brian	x				x		
+Reardon, Sean	X	Inside Sales Manager	500 - Sales		Lake, Brian	x				x		
+Barr, Kristofer	X	Account Manager	500 - Sales		Reardon, Sean	x				x		
+Caldwell, Brent A	X	Account Manager	500 - Sales		Reardon, Sean	x				x		
+Elmgren, Deborah	X	Account Manager	500 - Sales		Reardon, Sean	x				x		
+Espinosa, Toby	X	Account Manager	500 - Sales		Reardon, Sean	x				x		
+Grim, John	X	Account Manager	500 - Sales		Reardon, Sean	x				x		
+Morgan, John	X	Account Manager	500 - Sales		Reardon, Sean	x				x		
+Siebert, Fritz	X	Account Manager	500 - Sales		Reardon, Sean	x				x		
+Tegarden, Dylan	X	Account Manager	500 - Sales		Reardon, Sean	x				x		
+Thorpe, Tim	X	Field Sales Representative (UK)	500 - Sales 	Surrey, UK	Campbell, Scott	x						x
+Sonies, Mitch	X	VP Corporate and Business Development	510 - Business Development	Brooklyn, NY	Kanies, Luke	x					x	
+Palafox, Jose C	X	Business Development Manager	510 - Business Development		Sonies, Mitch	x				x		
+Johnson, Janet		Marketing Consultant, Acting VP of Marketing	600 - Marketing		Kanies, Luke	x				x		
+Brown, Alanna	X	(Top of Funnel) Marketing Team Lead	600 - Marketing		Johnson, Janet	x				x		
+Bye, Kent	X	Video Content Marketer	600 - Marketing		Johnson, Janet	x				x		
+Carroll, Michelle	X	Marketing Specialist	600 - Marketing		Johnson, Janet	x				x		
+de Jong, Briana	X	Events Marketing Manager	600 - Marketing		Johnson, Janet	x				x		
+Dorff, Justin	X	PR Manager	600 - Marketing	San Leandro, CA	Johnson, Janet	x					x	
+Earnshaw, Aliza	X	Managing Editor	600 - Marketing		Johnson, Janet	x				x		
+Hall, Michael	X	Managing Editor	600 - Marketing		Johnson, Janet	x				x		
+Lopez, Michelle	X	Marketing Specialist	600 - Marketing		Johnson, Janet	x				x		
+McCreath, Christy	X	(Middle of Funnel) Marketing Team Lead	600 - Marketing		Johnson, Janet	x				x		
+Mero, Jason	X	Technical Marketing Manager	600 - Marketing		Johnson, Janet	x				x		
+Prasuhn, Michael	X	Drupal Developer	600 - Marketing		Johnson, Janet	x				x		
+Snow, Christy		Events Coordinator	600 - Marketing		Johnson, Janet	x				x		
+Vandehey, Scott	X	Front-End Engineer	600 - Marketing		Johnson, Janet	x				x		
+Axelrod, Susannah	X	Director of Product	610 - Product		Stein, Brian		x			x		
+Coleman, Ryan	X	Product Owner (Mgr)	610 - Product		Axelrod, Susannah		x			x		
+Smith, Lindsey C. (Turbodog)	X	Product Owner (Mgr)	610 - Product		Axelrod, Susannah		x			x		
+Sorenson, Eric	X	Product Owner (Mgr)	610 - Product		Axelrod, Susannah		x			x		
+Hansen, Randall	X	VP of UX	700 - UX		Stein, Brian 		x			x		
+Campbell, Melinda	X	Senior UX Designer	700 - UX		Hansen, Randall		x			x		
+Caum, Carl	X	Prototype Engineer	700 - UX		Hansen, Randall		x			x		
+Cheung, Sze Wa	X	Visual Designer	700 - UX		Hansen, Randall		x			x		
+DeCoster, Darryll	X	Front-End Engineer	700 - UX		Hansen, Randall		x			x		
+Irby, Peter	X	Visual Designer	700 - UX		Hansen, Randall		x			x		
+Mahmoudi, Jennifer	X	UX Research Manager	700 - UX		Hansen, Randall		x			x		
+Federow, Mari	X	UX Research Coordinator	700 - UX		Mahmoudi, Jennifer		x			x		
+Guo, Fei	X	UX Researcher	700 - UX		Mahmoudi, Jennifer		x			x		
+Sauble, Daniel	X	UX Designer	700 - UX		Hansen, Randall		x			x		
+Wagner, Joe	X	UX Design Manager	700 - UX		Hansen, Randall		x			x		
+Welch, J.D.	X	Senior UX Designer	700 - UX		Hansen, Randall		x			x		
+Kersten, Nigel	X	Chief Technology Officer	810 - CTO		Kanies, Luke		x			x		
+Brubaker, Nathan	X	Desktop Support Technician	130 - IT		Kersten, Nigel				x	x		
+Cohen, Marni	X	Desktop Support Technician	130 - IT		Kersten, Nigel				x	x		
+Cunningham, Nick	X	Desktop Support Technician	130 - IT		Kersten, Nigel				x	x		
+Eldridge, Isaac	X	Technical Writer	820 - Technical Documentation		Kersten, Nigel		x			x		
+Fagerlund, Nick	X	Technical Writer	820 - Technical Documentation		Kersten, Nigel		x			x		
+Fredette, Michelle	X	Technical Writer	820 - Technical Documentation		Kersten, Nigel		x			x		
+Dunbar, Charles	X	Technical Operations Engineer	300 - Sys Ops		Kersten, Nigel				x	x		
+Dymock, Derrick	X	Technical Operations Engineer	300 - Sys Ops		Kersten, Nigel				x	x		
+Herriges, Cody	X	Technical Operations Engineer	300 - Sys Ops		Kersten, Nigel				x	x		
+Kirby, Matthew	X	Technical Operations Engineer	300 - Sys Ops		Kersten, Nigel				x	x		
+Leslie, Zachary	X	Technical Operations Engineer	300 - Sys Ops		Kersten, Nigel				x	x		
+Nikolaus, Brent	X	Technical Operations Engineer	300 - Sys Ops		Kersten, Nigel				x	x		
+Rodriguez, Jose	X	Technical Operations Engineer	300 - Sys Ops	San Antonio, TX	Kersten, Nigel				x		x	
+Holguin, Justin	X	Technical Writer	820 - Technical Documentation		Kersten, Nigel		x			x		
+Lifton, Fred	X	Technical Writer	820 - Technical Documentation		Kersten, Nigel		x			x		
+Rother, Lauren	X	Technical Writer	820 - Technical Documentation		Kersten, Nigel		x			x		
+Foster, Dawn	X	Director of Community	910 - Community		Files, Holly			x		x		
+Sowles, Kara	X	Community Coordinator	910 - Community		Foster, Dawn			x		x		
+Leon, John	X	Director, VMware Alliance	920 - Alliances		Sonies, Mitch	x				x		
+240	228	230				52	93	57	38	171	45	24
+Total EE Count	FT/REG EE'S					22%	39%	24%	16%	71.25%	18.75%	10.00%
+	8					Sales & Mktg	Prod Devpt	Cust Success	Corp Support	US-PDX	US, Non-PDX	Non-US
+	CONTRACTORS											
+	4											
+	INTERNS											
+												
+KEY												
+ORG LEVEL 1	CEO											
+ORG LEVEL 2	Exec											
+ORG LEVEL 3	Dir											
+ORG LEVEL 4	Mgr											
+ORG LEVEL 5	Ind Cont											
+INTERN												
+TEMP/CONTRACT												
