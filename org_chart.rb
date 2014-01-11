@@ -20,6 +20,7 @@ def filter(name)
   name.sub!(/Spence, Chris$/, 'Spence, Christopher')
   name.sub!(/Campbell, Scott$/, 'Campbell, Scott K')
   name.sub!(/Stahnke, Mike$/, 'Stahnke, Michael')
+  name.sub!(/Stanke, Mike$/, 'Stahnke, Michael')
   name.sub!(/Margalia, Dominic$/, 'Maraglia, Dominic')
   name
 end
