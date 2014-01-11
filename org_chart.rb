@@ -29,9 +29,8 @@ end
 dg = RGL::DirectedAdjacencyGraph.new
 
 File.foreach(INPUT_FILE) do |line|
-  (employee, reg_ee, title, dept,
-    base, supervisor, p_d, c_s, corp_s,
-      us_pdx, us_npdx, non_us) = line.split("\t")
+
+  (employee, b, c, d, e, supervisor, f) = line.split("\t", 7)
 
   next if employee == 'NAME'
   next if employee == CEO
