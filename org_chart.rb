@@ -6,6 +6,9 @@
 # Install Graphviz from:
 #  http://www.graphviz.org/Download_macos.php
 
+# To download new copy of the Org Chart:
+#  File -> Download As -> Plain Text
+
 require 'rgl/adjacency'
 require 'rgl/dot'
 
