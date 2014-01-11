@@ -1,5 +1,11 @@
 #!/usr/bin/ruby
 
+# Install RGL:
+#  sudo gem install rgl
+
+# Install Graphviz from:
+#  http://www.graphviz.org/Download_macos.php
+
 require 'rgl/adjacency'
 require 'rgl/dot'
 
