@@ -12,6 +12,15 @@ require 'rgl/dot'
 INPUT_FILE = 'org_charts/Org Chart 01-08-2014 - Sheet1.tsv'
 CEO = 'Kanies, Luke A'
 
+def filter(name)
+  name.sub!(/ *$/, '')
+  name.sub!(/Spence, Chris$/, 'Spence, Christopher')
+  name.sub!(/Campbell, Scott$/, 'Campbell, Scott K')
+  name.sub!(/Stahnke, Mike$/, 'Stahnke, Michael')
+  name.sub!(/Margalia, Dominic$/, 'Maraglia, Dominic')
+  name
+end
+
 dg = RGL::DirectedAdjacencyGraph.new
 
 File.foreach(INPUT_FILE).with_index do |line, line_num|
@@ -22,17 +31,12 @@ File.foreach(INPUT_FILE).with_index do |line, line_num|
   next if employee == 'NAME'
   next if employee == CEO
 
-  break unless employee.match(/.*,.*/)
+  break unless employee.match(/.*,.*/)  # handle summaries etc at the end of spreadsheet
 
-  employee.sub!(/ *$/, '')
+  employee = filter(employee)
+  supervisor = filter(supervisor)
 
-  supervisor.sub!(/ *$/, '')
-  supervisor.sub!(/Spence, Chris$/, 'Spence, Christopher')
-  supervisor.sub!(/Campbell, Scott$/, 'Campbell, Scott K')
-  supervisor.sub!(/Stahnke, Mike$/, 'Stahnke, Michael')
-  supervisor.sub!(/Margalia, Dominic$/, 'Maraglia, Dominic')
-
-  puts "#{line_num}: '#{employee}' -> '#{supervisor}'"
+  #puts "#{line_num}: '#{employee}' -> '#{supervisor}'"
 
   dg.add_edge(employee, supervisor)
 end
