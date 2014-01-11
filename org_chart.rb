@@ -22,12 +22,13 @@ def filter(name)
   name.sub!(/Stahnke, Mike$/, 'Stahnke, Michael')
   name.sub!(/Stanke, Mike$/, 'Stahnke, Michael')
   name.sub!(/Margalia, Dominic$/, 'Maraglia, Dominic')
+  name.sub!(/Martin, Max$/, 'Martin, Charles (Max)')
   name
 end
 
 dg = RGL::DirectedAdjacencyGraph.new
 
-File.foreach(INPUT_FILE).with_index do |line, line_num|
+File.foreach(INPUT_FILE) do |line|
   (employee, reg_ee, title, dept,
     base, supervisor, p_d, c_s, corp_s,
       us_pdx, us_npdx, non_us) = line.split("\t")
@@ -39,8 +40,6 @@ File.foreach(INPUT_FILE).with_index do |line, line_num|
 
   employee = filter(employee)
   supervisor = filter(supervisor)
-
-  #puts "#{line_num}: '#{employee}' -> '#{supervisor}'"
 
   dg.add_edge(employee, supervisor)
 end
