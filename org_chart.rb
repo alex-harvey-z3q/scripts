@@ -12,7 +12,6 @@
 require 'rgl/adjacency'
 require 'rgl/dot'
 
-INPUT_FILE = 'org_charts/Org Chart 01-08-2014 - Sheet1.tsv'
 CEO = 'Kanies, Luke A'
 
 def filter(name)
@@ -26,9 +25,21 @@ def filter(name)
   name
 end
 
+input_file = ARGV[0]
+
+if ! input_file
+  puts "Usage: #{$0} <file_name>"
+  puts ''
+  puts '  Perhaps try:'
+  Dir.glob('org_charts/*').each do |file|
+    puts "$ #{$0} '#{file}'"
+  end
+  exit 1
+end
+
 dg = RGL::DirectedAdjacencyGraph.new
 
-File.foreach(INPUT_FILE) do |line|
+File.foreach(input_file) do |line|
 
   (employee, b, c, d, e, supervisor, g) = line.split("\t", 7)
 
