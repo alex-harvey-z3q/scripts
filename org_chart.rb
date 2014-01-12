@@ -19,10 +19,10 @@ def filter(name)
   name.sub!(/ *$/, '')
   name.sub!(/Spence, Chris$/, 'Spence, Christopher')
   name.sub!(/Campbell, Scott$/, 'Campbell, Scott K')
-  name.sub!(/Stahnke, Mike$/, 'Stahnke, Michael')
-  name.sub!(/Stanke, Mike$/, 'Stahnke, Michael')
-  name.sub!(/Margalia, Dominic$/, 'Maraglia, Dominic')
-  name.sub!(/Martin, Max$/, 'Martin, Charles (Max)')
+  name.sub!(/Stahnke, Mike/, 'Stahnke, Michael')
+  name.sub!(/Stanke, Mike/, 'Stahnke, Michael')
+  name.sub!(/Margalia, Dominic/, 'Maraglia, Dominic')
+  name.sub!(/Martin, Max/, 'Martin, Charles (Max)')
   name
 end
 
@@ -30,7 +30,7 @@ dg = RGL::DirectedAdjacencyGraph.new
 
 File.foreach(INPUT_FILE) do |line|
 
-  (employee, b, c, d, e, supervisor, f) = line.split("\t", 7)
+  (employee, b, c, d, e, supervisor, g) = line.split("\t", 7)
 
   next if employee == 'NAME'
   next if employee == CEO
