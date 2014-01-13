@@ -16,3 +16,6 @@ org_chart.rb:
 
   - Creates a DOT graph of the company's org chart.
 
+tip.rb:
+
+  - calculates a tip amount.
