@@ -44,8 +44,8 @@ Ruzicka, Michal	X	Software Developer	200 - Engineering	 Rokycany, CZ	Armstrong, 
 Thatcher, Erica		Engineering Intern	200 - Engineering		Armstrong, Aaron		x			x		
 Williamson, Eric	X	Software Engineer	200 - Engineering		Armstrong, Aaron		x			x		
 Martin, Charles (Max)	X	(PE) Engineering Manager	200 - Engineering		Armstrong, Aaron		x			x		
-Linehan, Ruth	X	Associate Developer	200 - Engineering		Martin, Max		x			x		
 Axthelm, Steve	X	Java Script Applications Engineeer	200 - Engineering		Martin, Max		x			x		
+Linehan, Ruth	X	Software Developer	200 - Engineering		Martin, Max		x			x		
 Smith, Lindsey	X	Software Developer	200 - Engineering		Martin, Max		x			x		
 Smith, Nathaniel	X	Software Developer	200 - Engineering 	Atlanta, GA	Martin, Max		x				x	
 Giridharagopal, Deepak	X	Platform Engineering Director  	200 - Engineering	Denver, CO	Stein, Brian		x				x	
@@ -80,7 +80,7 @@ Lutterkort, David	X	Principal Engineer	200 - Engineering	San Francisco, CA	Stein
 Molina, Libby	X	Front-End Engineer	200 - Engineering		Martin, Max		x			x		
 Wolfe, Nate	X	(PE) Software Developer	200 - Engineering		Armstrong, Aaron		x			x		
 Stahnke, Michael	X	ESO Engineering Director	210 - Engineering Services		Stein, Brian		x			x		
-Raseley, Richard	X	Infrastructure and Tooling Engineer	210 - Engineering Services	Seattle, WA	Stanke, Mike		x				x	
+Raseley, Richard	X	Infrastructure and Tooling Engineer	210 - Engineering Services	Seattle, WA	Stahnke, Mike		x				x	
 Maraglia, Dominic	X	Engineering Manager	210 - Engineering Services		Stahnke, Mike		x			x		
 Chamberlain, Alex	X	SQA Engineer	210 - Engineering Services		Margalia, Dominic		x			x		
 Duarte, John	X	SQA Engineer	210 - Engineering Services		Margalia, Dominic		x			x		
@@ -142,16 +142,17 @@ Sharpsteen, Charlie	X	Support Engineer (Open Source)	430 - Customer Support		Ric
 Stern, Zachary	X	Support Engineer	430 - Customer Support		Richardson, Amanda			x		x		
 Walker, Nicholas	X	Support Engineer	430 - Customer Support		Richardson, Amanda			x		x		
 Wallace, Jay	X	Support Engineer	430 - Customer Support		Richardson, Amanda			x		x		
-Maddox, Patrick	X	Director of Sales Engineering	440 - Sales Engineering		Files, Holly			x		x		
-Adams, Jeremy 	X	Sales Engineer	440 - Sales Engineering		Maddox, Patrick			x		x		
-Barker, Chris	X	Sales Engineer	440 - Sales Engineering		Maddox, Patrick			x		x		
-Barringer, Nicholas	X	Sales Engineer	440 - Sales Engineering	Hampshire, UK	Maddox, Patrick			x				x
-Hong, John	X	Sales Engineer	440 - Sales Engineering	Bergenfield, NJ	Maddox, Patrick			x			x	
-Metcalf, Chad	X	Sales Engineer	440 - Sales Engineering	San Francisco, CA	Maddox, Patrick			x			x	
-Roberts, David	X	Sales Engineer	440 - Sales Engineering	Austin, TX	Maddox, Patrick			x			x	
-Thwaites, Steven	X	Sales Engineer	440 - Sales Engineering	London, UK	Maddox, Patrick			x				x
-Seebald, Spencer	X	Jr. Sales Engineer	440 - Sales Engineering		Maddox, Patrick			x		x		
-Vandewiele, Reid	X	Sales Engineer	440 - Sales Engineering		Maddox, Patrick			x		x		
+Maddox, Patrick	X	Director of Technical Solutions Engineering	440 - Technical Solutions Engineering		Files, Holly			x		x		
+Adams, Jeremy 	X	Technical Solutions Engineer	440 - Technical Solutions Engineering		Maddox, Patrick			x		x		
+Barker, Chris	X	Technical Solutions Engineer	440 - Technical Solutions Engineering		Maddox, Patrick			x		x		
+Barringer, Nicholas	X	Technical Solutions Engineer	440 - Technical Solutions Engineering	Hampshire, UK	Maddox, Patrick			x				x
+Hong, John	X	Technical Solutions Engineer	440 - Technical Solutions Engineering	Bergenfield, NJ	Maddox, Patrick			x			x	
+Metcalf, Chad	X	Technical Solutions Engineer	440 - Technical Solutions Engineering	San Francisco, CA	Maddox, Patrick			x			x	
+Roberts, David	X	Technical Solutions Engineer	440 - Technical Solutions Engineering	Austin, TX	Maddox, Patrick			x			x	
+Seebald, Spencer	X	Jr. Technical Solutions Engineer	440 - Technical Solutions Engineering		Maddox, Patrick			x		x		
+Thwaites, Steven	X	Technical Solutions Engineer	440 - Technical Solutions Engineering	London, UK	Maddox, Patrick			x				x
+Vandewiele, Reid	X	Technical Solutions Engineer	440 - Technical Solutions Engineering		Maddox, Patrick			x		x		
+Wettig, Elizabeth	X	Technical Solutions Engineer	440 - Technical Solutions Engineering		Maddox, Patrick			x		x		
 Campbell, Scott K	X	VP of Sales	500 - Sales		Kanies, Luke	x				x		
 Finn, Robert	X	APAC Sales Director	500 - Sales	NSW, Australia	Campbell, Scott	x						x
 Choudhry, Pervaiz	X	VP, North American Field Sales	500 - Sales	Menlo Park, CA	Campbell, Scott	x					x	
@@ -203,22 +204,23 @@ Mero, Jason	X	Technical Marketing Manager	600 - Marketing		Johnson, Janet	x				x
 Prasuhn, Michael	X	Drupal Developer	600 - Marketing		Johnson, Janet	x				x		
 Snow, Christy		Events Coordinator	600 - Marketing		Johnson, Janet	x				x		
 Vandehey, Scott	X	Front-End Engineer	600 - Marketing		Johnson, Janet	x				x		
+Westphal, Chris	X	Sr. Product Marketing Manager	600 - Marketing		Johnson, Janet	x						
 Axelrod, Susannah	X	Director of Product	610 - Product		Stein, Brian		x			x		
 Coleman, Ryan	X	Product Owner (Mgr)	610 - Product		Axelrod, Susannah		x			x		
 Smith, Lindsey C. (Turbodog)	X	Product Owner (Mgr)	610 - Product		Axelrod, Susannah		x			x		
 Sorenson, Eric	X	Product Owner (Mgr)	610 - Product		Axelrod, Susannah		x			x		
 Hansen, Randall	X	VP of UX	700 - UX		Stein, Brian 		x			x		
-Campbell, Melinda	X	Senior UX Designer	700 - UX		Hansen, Randall		x			x		
 Caum, Carl	X	Prototype Engineer	700 - UX		Hansen, Randall		x			x		
 Cheung, Sze Wa	X	Visual Designer	700 - UX		Hansen, Randall		x			x		
 DeCoster, Darryll	X	Front-End Engineer	700 - UX		Hansen, Randall		x			x		
 Irby, Peter	X	Visual Designer	700 - UX		Hansen, Randall		x			x		
+Welch, J.D.	X	Senior UX Designer	700 - UX		Hansen, Randall		x			x		
 Mahmoudi, Jennifer	X	UX Research Manager	700 - UX		Hansen, Randall		x			x		
 Federow, Mari	X	UX Research Coordinator	700 - UX		Mahmoudi, Jennifer		x			x		
 Guo, Fei	X	UX Researcher	700 - UX		Mahmoudi, Jennifer		x			x		
-Sauble, Daniel	X	UX Designer	700 - UX		Hansen, Randall		x			x		
 Wagner, Joe	X	UX Design Manager	700 - UX		Hansen, Randall		x			x		
-Welch, J.D.	X	Senior UX Designer	700 - UX		Hansen, Randall		x			x		
+Campbell, Melinda	X	Senior UX Designer	700 - UX		Wagner, Joe		x			x		
+Sauble, Daniel	X	UX Designer	700 - UX		Wagner, Joe		x			x		
 Kersten, Nigel	X	Chief Technology Officer	810 - CTO		Kanies, Luke		x			x		
 Brubaker, Nathan	X	Desktop Support Technician	130 - IT		Kersten, Nigel				x	x		
 Cohen, Marni	X	Desktop Support Technician	130 - IT		Kersten, Nigel				x	x		
@@ -239,8 +241,8 @@ Rother, Lauren	X	Technical Writer	820 - Technical Documentation		Kersten, Nigel	
 Foster, Dawn	X	Director of Community	910 - Community		Files, Holly			x		x		
 Sowles, Kara	X	Community Coordinator	910 - Community		Foster, Dawn			x		x		
 Leon, John	X	Director, VMware Alliance	920 - Alliances		Sonies, Mitch	x				x		
-240	228	230				52	93	57	38	171	45	24
-Total EE Count	FT/REG EE'S					22%	39%	24%	16%	71.25%	18.75%	10.00%
+242	230	232				53	93	58	38	172	45	24
+Total EE Count	FT/REG EE'S					22%	38%	24%	16%	71.07%	18.60%	9.92%
 	8					Sales & Mktg	Prod Devpt	Cust Success	Corp Support	US-PDX	US, Non-PDX	Non-US
 	CONTRACTORS											
 	4											

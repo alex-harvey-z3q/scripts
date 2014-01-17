@@ -25,17 +25,18 @@ def filter(name)
   name
 end
 
-input_file = ARGV[0]
-
-if ! input_file
+def usage
   puts "Usage: #{$0} <file_name>"
   puts ''
-  puts '  Perhaps try:'
+  puts '  Try:'
   Dir.glob('org_charts/*').each do |file|
     puts "$ #{$0} '#{file}'"
   end
   exit 1
 end
+
+input_file = ARGV[0]
+usage if !input_file
 
 dg = RGL::DirectedAdjacencyGraph.new
 
