@@ -35,14 +35,15 @@ DATE=`date +%e%b |sed -e 's/ //'`
 VMRUN="/Applications//VMware Fusion.app/Contents/Library/vmrun"
 CENTOS_ZIP=puppet-vmware.zip
 UBUNTU_ZIP=ubuntu-$UBUNTU_VER-vmware.zip
-MASTER_DIR=puppet-master-$DATE
-CLIENT_DIR=puppet-client-$DATE
-UBUNTU_DIR=puppet-ubuntu-$DATE
-SPARE1_DIR=puppet-spare1-$DATE
-SPARE2_DIR=puppet-spare2-$DATE
+MASTER_DIR=puppet-master-$DATE.$$
+CLIENT_DIR=puppet-client-$DATE.$$
+UBUNTU_DIR=puppet-ubuntu-$DATE.$$
+SPARE1_DIR=puppet-spare1-$DATE.$$
+SPARE2_DIR=puppet-spare2-$DATE.$$
 CENTOS_VMX=centos-$CENTOS_VER.vmx
 UBUNTU_VMX=ubuntu-$UBUNTU_VER.vmx
-SSH_KEY_NAME=id_rsa_$DATE
+SPARE1_VMX=centos-$CENTOS_VER.vmx
+SPARE2_VMX=centos-$CENTOS_VER.vmx
 
 # functions.
 usage() {
@@ -97,7 +98,13 @@ cd $VM_DIR/
   fail "$CENTOS_ZIP: unexpected cksum (new version of the zip file?)"
 [ $(cksum $UBUNTU_ZIP |awk '{print $1}') -ne $UBUNTU_CKSUM ] && \
   fail "$UBUNTU_ZIP: unexpected cksum (new version of the zip file?)"
-ps -ef |grep -q [s]howoff && fail "showoff appears to be already running"
+
+# kill and restart showoff if necessary.
+if ps -ef |grep -q [s]howoff
+then
+  pid=`ps -ef |awk '/[s]howoff/ {print $2}'`
+  kill $pid
+fi
 
 # unzip images.
 mkdir $MASTER_DIR/
@@ -151,10 +158,6 @@ edit_client_vmx $SPARE2_MAC $SPARE2_DIR/$CENTOS_VMX
 "$VMRUN" -T fusion start $SPARE1_DIR/$SPARE1_VMX 
 "$VMRUN" -T fusion start $SPARE2_DIR/$SPARE2_VMX 
 
-# generate an ssh key pair.
-mkdir -p $HOME/.ssh
-ssh-keygen -t rsa -f $HOME/.ssh/$SSH_KEY_NAME -P ''
-
 # start showoff.
 cd $SHOWOFF_DIR/
-showoff serve -f showoff.json
+showoff serve
