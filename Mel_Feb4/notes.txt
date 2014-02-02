@@ -1,17 +1,18 @@
 Course_Overview/Course_Intro.md:
 
-* (good morning, I am ..., email address)
-* I recently joined Puppet Labs as a PSE.  Prior to this I rolled out puppet to manage a large fleet of commercial Unix systems.
-* (introduce Brett)
-* (Please ask questions) Questions help you learn and help others learn.
-* (fire escapes and toilets)
-* (lunch and breaks)
+* (good morning, I am ..., email address, IPs, passwords)
+* (introduce myself, introduce Brett)
+    * administrative:  toilets; fire escapes; breaks; count people
 * (introductions)
+    * want to know: name, bit about you, experience with puppet, windows/linux
+* (lab guide - solutions; discussion questions)
+* (Please ask questions)
 
 Course_Overview/Course_Objectives.md:
 
-The course is intended for system administrators and developers who
+* The course is intended for system administrators and developers who
 want a grounding in the fundamentals of the Puppet language and best practices.
+* My hope is for everyone in the room to come out understanding the puppet language.
 
 Course_Overview/Course_Overview.md:
 
@@ -21,58 +22,43 @@ In this course you will (among other things):
 * learn how to test those modules
 * learn how to use the Enterprise Console
 * learn about MCollective / Live Management
-* and much more...
+* and more...
 
 Course_Overview/Course_Agenda_1.md:
 
-On day #1 we intend to cover:
-
-* A general overview of Puppet
-* Some basic concepts
-* Our classroom environment
-* The Puppet Master and Agent roles
-* We will write some simple modules and classes
-* And we will learn about classification - applying classes to nodes
+I don't want to spend much time discussing the agenda.
 
 Course_Overview/Course_Agenda_2.md:
 
 On day #2 we will look at:
 
 * Resources also known as types or resource types
-* Chaining or ordering resources
-* We will look at language constructs - if, else, case statements and so on
+* How to order resources in Puppet using relationships
+* language constructs - if, else, case statements and so on
 * How to add dynamic content to files using ERB templates
-* And defined resources
+* And how to define new resources using the Puppet language.
 
 Course_Overview/Course_Agenda_3.md:
 
 And on day #3 we will look at:
 
 * The puppet forge
-* Advanced classes - class inheritance and parameterized classes
-* Report handlers
+* Advanced classes - parameterized classes and class inheritance
+* Available options for handling reports
 * Live Management and MCollective
-* Data separation using Hiera
+* Data separation which really means Hiera
 * And then we'll have the Capstone lab, where we try to put everything together and build a Wordpress server.
 
 About_Puppet/Objectives.md:
 
-In this lesson we will:
-
-* Identify the challenges of managing infrastructure at scale.
-* Talk about how Puppet overcomes these challenges.
-* And we'll look at the community resources available to you.
-
-(ignore last bullet.)
+(skip.)
 
 About_Puppet/About_Puppet.md:
  
-* Luke Kanies wrote Puppet in 2002, after having spent a lot of time doing CFengine consulting.
-* He had become frustrated with CFengine and was finding it hard to contribute back to the CFengine project.
-* In 2003 he converted his consulting company to Reductive Labs and later in 2005 founded Puppet Labs.
-* In 2011 Puppet Labs released its first commercial product, Puppet Enterprise.
-* (now read last 5 bullets) Now we have: over 1000 forge modules; over 6000 active community members; over 20000 users; and some sites doing more than 50000 nodes.
-* Support for all major linuxes, BSDs, Windows, Solaris, AIX, and Mac OS X.
+* Way back in the early 1990s a very smart guy, Mark Burgess, invented a way-ahead-of-its-time tool called "CFengine".
+* Our CEO Luke Kanies had been a consultant in the 1990s and CFengine power user.
+* Luke became frustrated (Mark didn't believe in version control; Mark was in love with impenetrable CFengine language)
+* 2002 Luke started writing Puppet; 2005 Luke founded a startup - Puppet Labs; next three years, Luke went about proselytising.
 
 About_Puppet/Puppet_Customers.md:
 
@@ -111,10 +97,9 @@ With Puppet we can:
 
 About_Puppet/Introducing_PE.md:
 
-Puppet Enterprise adds:
+Some reasons to buy PE may be:
 
 * Convenient installer - the components of Puppet are installed and configured automatically.
-* The Enterprise Console - honestly, it's crap.
 * Orchestration - Puppet Enterprise automatically configures MCollective (and anyone who's tried to do it using the open source product will know it's a pain).
 * VMware cloud provisioner - only available in PE.
 
@@ -142,9 +127,12 @@ Support:
 * Two levels of support available - standard and premium.
 * See <http://puppetlabs.com/services/support-plans/> for more info
 Training.
+* Also <http://puppetlabs.com/services/consulting>
 * Aside from this Puppet Fundamentals course I recommend you all come back some time and do the Advanced course and Extending Puppet using Ruby.
 
 About_Puppet/How_Puppet_Works.md:
+
+At a high level here is how Puppet works:
 
 * (define) We define the desired state of our systems.
 * (simulate) Simulate proposed changes.
@@ -156,6 +144,11 @@ About_Puppet/Puppet_Works_Define2.md:
 * Here is an example of some Puppet code.
 * Can anyone guess what that does?
 * Does anyone feel they couldn't guess what that does?
+
+About_Puppet/Puppet_Works_Define3.md:
+
+* This allows us to leverage "composability" - see
+http://en.wikipedia.org/wiki/Composability
 
 About_Puppet/Data_Flow_for_Nodes.md:
 
@@ -175,6 +168,7 @@ Concepts/Objectives.md:
 Concepts/the_problem.md:
 
 (Read this slide from the top, slowly, word for word.)
+Joke:  Elmo is a puppet, by the way.  That's not important, however.
 
 Concepts/traditional_solutions.md:
 
@@ -268,7 +262,8 @@ Concepts/imperative.md:
 
 * Puppet is a declarative programming language.
 * Other declarative languages include:  Makefiles; HTML; Veritas Cluster Server main.cf
-* A declarative language 'declares' a desired state with specifying how that state is achieved.
+* A declarative language 'declares' a desired state without specifying how that state is achieved.
+* Declarative is the WHAT without the HOW.
 * Declarative programming is to be constrasted with imperative programming languages.
 * Imperative languages include: shell, C, Perl, Python and Ruby.
 
@@ -329,9 +324,20 @@ Classroom_Setup/demo1.md:
 
 Doco:
 
-* https://github.com/puppet-training/courseware-fundamentals
+* https://github.com/puppetlabs/courseware-fundamentals/blob/master/InstructorGuide.md
 * HOWTO Demo#1 Installing Puppet Master
 * NOTE: the 'puppet agent -t' step is missing from the end of Lab 3.2!!
+* Don't forget ntpdate step!
+
+Classroom_Setup/Lab_Preinstallation.md:
+
+* Ask all students for their name and IP address.
+
+Classroom_Setup/Lab_Installation.md:
+
+* On the master run:
+
+watch -n1 puppet cert list
 
 Classroom_Setup/Facter_overview.md:
 
@@ -352,6 +358,11 @@ Classroom_Setup/query.md:
 Classroom_Setup/query_all.md:
 
 If you run 'puppet resource user', you will see all of the users on your system formatted in puppet manifest code.
+
+Try:
+
+    * puppet resource package vim ensure=present
+    * puppet resource user root uid=100
 
 Classroom_Setup/Agent_Master_Certs.md:
 
@@ -401,12 +412,14 @@ About GIT:
 
 * It was developed in 2005 by Linus Torvalds as a replacement for system they were using for linux kernel development.
 * It was designed to be fast, distributed, free, and capable of handling several hundred commits per day, as were the needs of the linux kernel developers.  
-* Its main advantage over SVN is that there is no need for a network, no need to check out a revision of code, which is a slow operating, and branching and merging is much easier and faster.
+* Its main advantages over SVN are: no need for network; no need to check out; branching and merging is much easier and faster.
 * I haven't personally ever heard anyone who has used GIT say that they don't like it.
 
 On the following slides we'll cover a few commands that we'll use in the course.
 
 Classroom_Setup/git_mini_tutorial_status.md:
+
+Introduce git init too.
 
 Git status shows us the status of the working directory.
 
@@ -458,10 +471,6 @@ If you want to know more I thoroughly recommend that you read the online GIT boo
 Roles/Objectives.md:
 
 We're going to discuss the two roles of Puppet Master and Puppet Agent that the Puppet executable can run it.
-
-Roles/configuration_management.md:
-
-This slide shows a Puppet Master interacting with Puppet Agents - isn't it pretty?  I don't have much to say about it really.
 
 Roles/Agent_overview.md:
 
@@ -717,6 +726,17 @@ It is possible to use regular expressions to define a group of nodes.
 * If you're going to use regular expressions (and you're probably not :), then make sure you know what you're doing.  You don't want two different regular expressions to match the same node, for instance.
 * E.g. don't use the regular expression ".*" :)
 
+Do demo of web001, web002 and web888 using:
+
+    @@@ Puppet
+    node /^web[0-9][0-9][0-9].example.com/ {
+      include role::mywebapp
+    }
+
+    node 'web888.example.com' {
+      include role::mysuperwebapp
+    }
+
 Classification/Nodes_default.md:
 
 * Now I need to be honest here and say that this slide is actually wrong.
@@ -742,6 +762,58 @@ Classification/console_node.md:
 
 And here is our node definition in the Console.  Note that this node defition in the console is equivalent to this piece of site.pp code.
 
+Resources/Namevar_overview.md:
+
+Most resources have an attribute (often called 'name') whose value will default to the title if you don’t specify it. (Internally, the attribute with this property is called the “namevar.”) Thus, commonly used types like user, group, package and service all have namevars called 'name', whereas the file type has a namevar called 'path', exec has namevar 'command', and so on.
+
+A resource’s namevar value almost always has to be unique. (There are a few exceptions.)
+
+Resources/Exec_Resource.md:
+
+The exec resource is intended for use in edge-case situations only.  By that I mean to cope with situations Puppet wasn't designed explicitly to deal with.
+
+A controversial, but easy to understand, example is the tar ball installer.
+
+    @@@ Puppet
+    exec { 'tar xvf /tmp/hpov.tar':
+      path => '/bin',
+      cwd => '/opt',
+      creates => '/opt/OV',
+    }
+
+Resources/Advanced_Resources.md:
+
+If you come back for the Advanced Puppet course you'll learn about exported resources and virtual resources.  I'll briefly explain what they are and what they're for.
+
+Virtual resource:
+
+    * A virtual resource is needed in situations where two or more unrelated classes need to define and manage the same resource.
+    * Example - a hosts file entry.
+
+    @@@ Puppet
+    class app1 {
+      ...
+      host { 'myprinter':
+        ensure => present,
+        ip     => '10.0.0.10',
+      }
+    }
+    
+    class app2 {
+      ...
+      host { 'myprinter':
+        ensure => present,
+        ip     => '10.0.0.10',
+      }
+    }
+
+* Exported resources:
+
+    * Exported resources are like virtual resources except they are exported to a database (called the 'puppetDB') so that they can be shared across multiple nodes.
+    * Class use-case is the sshkey problem.
+    * When new hosts are brought online, the 'known_hosts' file of every other host becomes stale, and this causes the 'unknown host' message and a warning about man-in-the-middle attacks to appear.
+    * You can 'export' the sshkey of a new host into the PuppetDB and at the next puppet run, it can be imported into known_hosts file on every other node.
+
 Resource_Relationships/Objectives.md:
 
 In this lesson we're going to talk about:
@@ -761,6 +833,8 @@ Resource_Relationships/Res_Rel_overview.md:
 * On the other hand, the code is certainly *parsed* in the order in which it's written.
 
 (Give example of /tmp/foo with a variable before and after it's used.)
+
+* Read from slide, "Manifests are parsed..."
 
 Resource_Relationships/meta.md:
 
@@ -811,6 +885,22 @@ Resource_Relationships/PFS_overview.md:
 One of the most common situations encountered when writing Puppet modules is a need to, firstly, install a package; then edit or install a configuration file; and then start a service.
 
 We refer to this as the 'Package | File | Service' pattern, and it's the bread and butter of puppet code writing if you like.
+
+Language_Constructs/Variables_overview.md:
+
+(Read from this slide.)
+
+Language_Constructs/quoting.md:
+
+Variables can be interpolated in strings in much the same way as in shell and perl.
+
+    * Single-quoted strings are literal strings and do not admit interpolation.
+    * Double-quoted strings do admit variable interpolation and special characters like the newline.
+
+Programming best practice: when should you use single-quotes and when should you use double-quotes?
+
+    * always use single-quoted strings unless it is required to be double-quoted.
+    * This will make your code easier to understand.
 
 Defined_Resources/Objectives.md:
 
@@ -900,3 +990,91 @@ Templates/Separation_of_concerns.md:
  
 * ERB templates allow us to hide the complexity of dynamic content in files from our manifests.
 * Another benefit is we can update our files without changing the manifests (reduces the likelihood of introducing errors).
+
+Advanced_Classes/inherited_classes_1.md:
+
+* Class inheritance is basically an old language feature that pre-dates parameterized classes, which were introduced in Puppet version 2.
+* In the old days people often would write a base class as in the example shown in this slide.
+
+Advanced_Classes/inherited_classes_3.md:
+
+* SKIP - this is just repeating what we explained in the previous slide.
+
+Advanced_Classes/inherited_classes_4.md:
+
+* So when should we use inheritance?
+* Our opinion in Puppet Labs is that the only remaining use-case for inheritance is the so-called "params pattern".
+* Demo params from puppetlabs/ntp.
+
+Advanced_Classes/parameterized_define.md:
+
+* 
+
+Report_Handlers/Reports_overview_continued.md:
+
+Basic example - we have:
+* a notify type
+* transaction data - "what" happened
+* metric data - "how long did it take"
+
+Report_Handlers/tagmail.md:
+
+Tagmail sends out emails when resources with a given tag are modified. For example, if you tagged Service['httpd'] with webserver and Puppet restarted Apache, using the example above, webadmin~puppetlabs.com would be notified.
+
+    apache::vhost { 'somehost.com':
+      port => 80,
+      tag  => webserver,
+    }
+
+Live_Management/Objectives.md:
+
+In this lesson we look at the Live Management function in the Enterprise Console and very briefly look at MCollective.
+
+Live_Management/Network_visibility.md:
+
+* Live Management (LM) is a feature of the Puppet Enterprise Console that uses MCollective and ActiveMQ to provide a parallel job execution framework with other capabilities like network discovery and data based node selection.
+* MCollective is the tool underneath that was written by an angry South African dude named RI Pienar, who also wrote Hiera.  Puppet Labs decided he was so good that they hired him to help us integrate these incredibly useful tools into PE.
+* With Live Management you can:
+    * discover the state of network resources.
+    * stop and start services, e.g. stop the puppet agents or force an immediate run of the agents.
+
+Live_Management/Orchestration.md:
+
+* Here we provide an example use case for Live Management.
+* Imagine you're managing a fleet of servers and you discover a bunch of servers need a critical security update.  You could:
+    * Use MCollective to issue an immediate yum update out of band.
+
+Live_Management/why_mcollective.md:
+
+* Why MCollective, a.k.a. the "why is Puppet better than BMC BladeLogic and other similar tools" slide.
+
+Live_Management/MCollective_Functionality.md:
+
+* Talk about the naming convention from Optus - au11apx001
+
+Live_Management/what_is_mcollective.md:
+
+* As mentioned, the Live Management function of the PE Console uses RI Pienar's MCollective.
+* MCO runs on top of ActiveMQ (actually it can run on any message bus, e.g. RabbitMQ being another popular alternative.
+* So.. a lot of words on this slide but it boils down basically to:
+    * A framework for parallel job execution - more powerful than "ssh in a for loop"
+
+Live_Management/why_mcollective.md:
+
+We've seen some of the benefits already:
+
+* Tools like SCCM, BladeLogic and so on: very centralised - you need to tell the system what's out there.
+
+
+Data_Separation/Overview.md:
+
+* Single source of truth is the principle that you only want to ever store one copy of a single piece of information.
+* Talk about example of changing my direct debit information.
+* Example:
+    * Alex Harvey, 1 some street, somewhere, 4546050013645344
+    * Alex Harvey, 1 some street, somewhere, 062354 6660006
+
+Data_Separation/Hiera_Overview.md:
+
+* 
+
