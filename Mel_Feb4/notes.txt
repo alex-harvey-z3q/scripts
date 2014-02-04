@@ -1,12 +1,12 @@
 Course_Overview/Course_Intro.md:
 
-* (good morning, I am ..., email address, IPs, passwords)
+* (good morning, I am ..., email address, IPs, passwords, count students)
 * (introduce myself, introduce Brett)
     * administrative:  toilets; fire escapes; breaks; count people
 * (introductions)
     * want to know: name, bit about you, experience with puppet, windows/linux
 * (lab guide - solutions; discussion questions)
-* (Please ask questions)
+* (Please ask questions; I'm not a public speaking guru)
 
 Course_Overview/Course_Objectives.md:
 
@@ -480,6 +480,16 @@ Roles/puppet_conf_example.md:
 
 * The configuration file for both the Puppet Master and Agent is /etc/puppetlabs/puppet.conf (and in open source puppet it's /etc/puppet/puppet.conf).
 * This very simple configuration just sets the var, log and run dir, and sets the certname and puppet master hostname.
+
+* In $vardir:
+
+    * yaml - catalogs saved here
+    * graph - DAGs
+    * classes.txt
+    * reports
+    * state - show them what's in here
+
+* In $rundir:
 
 Roles/Agent_cl_options.md:
 
@@ -993,7 +1003,7 @@ Templates/Separation_of_concerns.md:
 
 Advanced_Classes/inherited_classes_1.md:
 
-* Class inheritance is basically an old language feature that pre-dates parameterized classes, which were introduced in Puppet version 2.
+* Class inheritance is basically an old language feature that pre-dates parameterized classes, which were introduced in Puppet version 2.6.
 * In the old days people often would write a base class as in the example shown in this slide.
 
 Advanced_Classes/inherited_classes_3.md:
@@ -1065,16 +1075,61 @@ We've seen some of the benefits already:
 
 * Tools like SCCM, BladeLogic and so on: very centralised - you need to tell the system what's out there.
 
+Live_Management/demo_browse_resources.md:
+
+* This might be useful: http://docs.puppetlabs.com/pe/latest/orchestration_puppet.html
 
 Data_Separation/Overview.md:
 
 * Single source of truth is the principle that you only want to ever store one copy of a single piece of information.
 * Talk about example of changing my direct debit information.
 * Example:
-    * Alex Harvey, 1 some street, somewhere, 4546050013645344
+    * Alex Harvey, 1 some street, somewhere, 4546060034221322
     * Alex Harvey, 1 some street, somewhere, 062354 6660006
 
 Data_Separation/Hiera_Overview.md:
 
-* 
+I want to now relate SSOT design to Puppet design and get you all to understand what the problem is, and how Hiera solves the problem.
+
+This treatment here is a cut down version of Gary Larizza's http://puppetlabs.com/blog/the-problem-with-separating-data-from-puppet-code.  See also http://garylarizza.com/blog/2013/12/08/when-to-hiera/
+
+Imagine this:
+
+    @@@ Puppet
+    $dnsserver    = '8.8.8.8'
+    $searchdomain = 'puppetlabs.vm'
+    file { '/etc/resolv.conf':
+      ensure  => present
+      content => "search ${searchdomain}\n nameserver ${dnsserver}\n",
+    }
+
+What's the problem?
+
+First solution:  inheritance.
+
+    @@@ Puppet
+    node common {
+      $dnsserver    = '8.8.8.8'
+      $searchdomain = 'puppetlabs.vm'
+    }
+    node lab inherits common {
+      $dnsserver = '10.13.1.3'
+    }
+    node 'laptop.puppetlabs.vm' inherits lab {
+      file { '/etc/resolv.conf':
+        content => "search ${searchdomain}\n nameserver ${dnsserver}\n",
+      }
+    }
+
+Problem:  very hard to follow.  Imagine if node common, production and agent were in separate files.
+
+Data_Separation/Hiera_Example_before.md:
+
+If you don't worry about the problem of data separation early, there's a good chance you'll end up over time with code that looks about like this:
+
+Data_Separation/Hiera_Example_after.md:
+
+But if you've designed your hierarchies properly and you're using Hiera, you'll end up with nice readable code in your manifests like this:
+
+Data_Separation/Hiera_design_capabilities.md:
 
