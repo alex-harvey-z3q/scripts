@@ -1133,3 +1133,34 @@ But if you've designed your hierarchies properly and you're using Hiera, you'll 
 
 Data_Separation/Hiera_design_capabilities.md:
 
+Data_Separation/Hiera_Demo.md:
+
+Problem:  write a DNS parameterized class that allows individual nodes to inherit different DNS servers.
+
+    @@@Yaml
+    ---
+    :backends:
+      - yaml
+    :yaml:
+      - /etc/puppetlabs/puppet/hieradata
+    :hierarchy:
+      - "node/%{::fqdn}
+      - common
+
+.break text
+
+    @@@ Puppet
+    class dns (
+      $nameserver = hiera('nameserver')
+      $search = hiera('search')
+    ) {
+      $ns_text = inline_template("<% @nameserver.each do |n| -%>
+    nameserver <%= n %>
+    <% end -%>")
+    
+      file { '/etc/resolv.conf':
+        ensure => file,
+        content => $ns_text,
+      }
+    }
+
