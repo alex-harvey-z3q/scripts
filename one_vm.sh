@@ -53,6 +53,7 @@ unzip -d $CLIENT_DIR/ $CENTOS_ZIP
 # h/w configuration for clients.
 perl -pi -e 's/ethernet0.connectionType = "nat"/ethernet0.connectionType = "bridged"/' \
   $CLIENT_DIR/$CENTOS_VMX
+echo 'tools.syncTime = "TRUE"' >>$CLIENT_DIR/$CENTOS_VMX
 
 # upgrade and boot them.
 "$VMRUN" -T fusion upgradevm $CLIENT_DIR/$CENTOS_VMX 

@@ -129,6 +129,7 @@ perl -pi -e '
 ethernet0.address = "'$MASTER_MAC'"/;
 ' \
   $MASTER_DIR/$CENTOS_VMX
+echo 'tools.syncTime = "TRUE"' >>$MASTER_DIR/$CENTOS_VMX
 
 # h/w configuration for clients.
 edit_client_vmx() {
@@ -140,6 +141,7 @@ edit_client_vmx() {
 ethernet0.address = "'$mac'"/;
   ' \
     $vmx_file
+  echo 'tools.syncTime = "TRUE"' >>$vmx_file
 }
 edit_client_vmx $CLIENT_MAC $CLIENT_DIR/$CENTOS_VMX
 edit_client_vmx $UBUNTU_MAC $UBUNTU_DIR/$UBUNTU_VMX
