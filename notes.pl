@@ -53,17 +53,39 @@ print "ok\n";
 print 'adding notes to slides ';
 foreach my $slide (keys %data) {
     my $s = "$courseware_dir/$slide";
-    print '.';
+    #print '.';
     system("sed '/^\.notes/d' $s >tmp.$$");
     system("mv -f tmp.$$ $s");
     system("sed '/^~~~SECTION:notes~~~/,/^~~~ENDSECTION~~~/d' $s >tmp.$$");
     system("mv -f tmp.$$ $s");
-    system("echo '' >>$s");
-    system("echo '~~~SECTION:notes~~~' >>$s");
-    open FILE, ">>$s" or die "open: $!";
-    print FILE $data{$slide};
-    close FILE;
-    system("echo '~~~ENDSECTION~~~' >>$s");
+    my $c;
+    open FILE1, "<$s";
+    open FILE2, ">tmp.$$";
+    while (<FILE1>) {
+        if (/SLIDE/ and !$c) {
+            ++$c;
+        } elsif (/SLIDE/ and $c == 1) {
+            print FILE2 "\n~~~SECTION:notes~~~\n";
+            print FILE2 $data{$slide};
+            print FILE2 "~~~ENDSECTION~~~\n\n";
+            ++$c;
+        }
+        print FILE2 $_;
+    }
+    close FILE2;
+    close FILE1;
+    system("mv -f tmp.$$ $s");
+    if (!$c or $c == 1) {
+        system("echo '' >>$s");
+        system("echo '~~~SECTION:notes~~~' >>$s");
+        open FILE, ">>$s" or die "open: $!";
+        print FILE $data{$slide};
+        close FILE;
+        system("echo '~~~ENDSECTION~~~' >>$s");
+        print '-';
+    } elsif ($c > 1) {
+        print '+';
+    }
 }
 print "\n";
 
