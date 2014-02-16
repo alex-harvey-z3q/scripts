@@ -2,9 +2,10 @@
 
 # check setup directories.
 VM_DIR=$HOME/VMs/
-SHOWOFF_DIR=$HOME/git/courseware-fundamentals/
+COURSEWARE_DIR=$HOME/git/courseware-fundamentals/
+SCRIPTS_DIR=$PWD
 [ ! -d $VM_DIR ] && fail "$VM_DIR: directory doesn't exit. Please create and copy zip files to this directory"
-[ ! -d $SHOWOFF_DIR ] && fail "$SHOWOFF_DIR: directory doesn't exist. Please clone the courseware in $SHOWOFF_DIR"
+[ ! -d $COURSEWARE_DIR ] && fail "$COURSEWARE_DIR: directory doesn't exist. Please clone the courseware in $COURSEWARE_DIR"
 
 # versions.
 CENTOS_VER=6.3-pe-3.0.1
@@ -58,7 +59,7 @@ $ cd $HOME/VMs/
 $ curl -O http://downloads.puppetlabs.com/training/$CENTOS_ZIP
 $ curl -O http://downloads.puppetlabs.com/training/$UBUNTU_ZIP
 
-Also make sure you have cloned the courseware to $SHOWOFF_DIR:
+Also make sure you have cloned the courseware to $COURSEWARE_DIR:
 
 $ git clone https://github.com/puppet-training/courseware-fundamentals
 
@@ -160,6 +161,10 @@ edit_client_vmx $SPARE2_MAC $SPARE2_DIR/$CENTOS_VMX
 "$VMRUN" -T fusion start $SPARE1_DIR/$SPARE1_VMX 
 "$VMRUN" -T fusion start $SPARE2_DIR/$SPARE2_VMX 
 
+# get stats ready.
+cd $COURSEWARE_DIR/
+rm -rf stats
+mkdir stats
+
 # start showoff.
-cd $SHOWOFF_DIR/
 showoff serve
