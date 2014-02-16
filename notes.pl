@@ -50,6 +50,10 @@ print "ok\n";
 
 # add notes to slides.
 
+system("cd $courseware_dir; git checkout -- .");
+system("./patch.sh");
+system("cd $courseware_dir; rm -rf stats; mkdir stats");
+
 print 'adding notes to slides ';
 foreach my $slide (keys %data) {
     my $s = "$courseware_dir/$slide";
