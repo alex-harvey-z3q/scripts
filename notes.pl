@@ -3,16 +3,17 @@
 use strict;
 use warnings;
 
-my $courseware_dir = "$ENV{HOME}/git/courseware-fundamentals";
+$ARGV[0] eq '-h' and usage();
+my @notes = @ARGV;
 
-my $notes = $ARGV[0] ? $ARGV[0] : 'notes.txt';
-$notes eq '-h' and usage();
-
-if (! -e $notes) {
-    print "file not found: $notes\n";
-    usage();
+foreach my $notes (@notes) {
+    if (! -e $notes) {
+        print "file not found: $notes\n";
+        usage();
+    }
 }
 
+my $courseware_dir = "$ENV{HOME}/git/courseware-fundamentals";
 if (! -e $courseware_dir) {
     print "expected courseware-fundamentals to be checked out ";
     print "at $courseware_dir\n";
@@ -28,24 +29,27 @@ my %data = ();
 
 my $slide;
 
-print "reading $notes ";
-open NOTES, "<$notes" or die "open: $! ($notes)";
-while (<NOTES>) {
-    if ($. == 0 and !m#/.*\.md:#) {
-        print "error: $notes line $.: first line must be a slide name + ':'\n";
-        exit 1;
+foreach my $notes (@notes) {
+    print "reading $notes ";
+    open NOTES, "<$notes" or die "open: $! ($notes)";
+    while (<NOTES>) {
+        next if /^# /;
+        if ($. == 0 and !m#/.*\.md:#) {
+            print "error: $notes line $.: first line must be a slide name + ':'\n";
+            exit 1;
+        }
+        if (m#/.*\.md:#) {
+            print '.';
+            chomp;
+            $slide = $_;
+            $slide =~ s/:$//;
+            die("$courseware_dir/$slide not found") if (!slide_exists("$courseware_dir/$slide"));
+            next;
+        }
+        $data{$slide} .= $_;
     }
-    if (m#/.*\.md:#) {
-        print '.';
-        chomp;
-        $slide = $_;
-        $slide =~ s/:$//;
-        exit 1 if (!slide_exists("$courseware_dir/$slide"));
-        next;
-    }
-    $data{$slide} .= $_;
+    close NOTES;
 }
-close NOTES;
 print "ok\n";
 
 # add notes to slides.
