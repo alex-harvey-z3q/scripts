@@ -1,0 +1,743 @@
+Course_Overview/Course_Objectives.md:
+
+* The course is intended for system administrators and developers who
+want a grounding in the fundamentals of the Puppet language and best practices.
+* My hope is for everyone in the room to come out understanding the puppet language.
+
+About_Puppet/About_Puppet.md:
+ 
+* Luke's email:
+
+"Once upon a time (early 90's) Mark Burgess created a new ahead-of-its-time tool for holistic configuration management called CFengine.  The idea was to not just configure part of your system but to manage the entire configuration so that you always had a known and consistent state.  It became popular, especially for those doing High Performance Computing (HPC) and grew in popularity with the rise of the internet through the late 90's and early 2000's.  
+
+
+Luke Kanies was a system administrator who was doing a lot of CFengine consulting but felt it had some serious flaws and after trying unsuccessfully to convince Mark to accept changes Luke decided to create a new product called Puppet that embraced the same basic philosophical approach but in a more user friendly and modern way.  Luke worked on Puppet on his own time, spent almost all his free time doing user group and conference talks to build interest, etc.  Luke come to work for Joyent in 2007 but after some serious clashes with David & Jason he left the company (after only a couple weeks) and went on to found PuppetLabs as a company and made it his full time job.
+
+
+I started the company and project at the same time, in 2005.  Otherwise, largely correct, although it was more of a general philosophical disagreement with Mark, rather than him not accepting changes.  E.g., he thought version control was overhead, and deeply believed in unreadable, hard to maintain code."
+
+* See also: <https://c59951.ssl.cf2.rackcdn.com/807-kanies_0.pdf>
+
+About_Puppet/Current_State.md:
+
+All-or-nothing software packages:
+
+<file:///Users/alexharvey/Documents/Screen%20Shot%202014-02-16%20at%204.11.25%20pm.png>
+
+Support:
+
+* Two levels of support available - standard and premium.
+* See <http://puppetlabs.com/services/support-plans/> for more info
+Training.
+* Also <http://puppetlabs.com/services/consulting>
+* Aside from this Puppet Fundamentals course I recommend you all come back some time and do the Advanced course and Extending Puppet using Ruby.
+
+About_Puppet/How_Puppet_Works.md:
+
+* <http://puppetlabs.com/puppet/what-is-puppet>
+* Composability - <http://en.wikipedia.org/wiki/Composability>
+
+Concepts/idempotent.md:
+
+Idempotence.  (Read the definition out.)
+
+Examples of commands that are idempotent:
+
+* ls
+* touch /reconfigure
+
+Examples of commands that are not idempotent:
+
+* logger -p
+* mkfs
+
+Understanding idempotency is important when writing Puppet code.  We'll come back to this throughout the course.
+
+Concepts/imperative.md:
+
+* Other declarative languages:  Makefiles; HTML; Veritas Cluster Server main.cf
+
+Classroom_Setup/demo1.md:
+
+Doco:
+
+* <https://github.com/puppetlabs/courseware-fundamentals/blob/master/InstructorGuide.md>
+
+Steps:
+
+* bridged networking, RAM & CPUs
+* login from terminal
+* ntpdate
+* ifconfig eth0 - to get the IP address
+* set the hostname - note the /etc/hosts entry for master is actually required
+* list contents of /root - show the tarball, symlink
+* cd ~/puppet-enterprise
+* list contents of this dir.
+* ./puppet-enterprise-installer -h
+* ./puppet-enterprise-installer -s answers.txt
+* vi answers.txt
+* ./puppet-enterprise-installer -a answers.txt
+
+Now talk about:
+
+* verifies and installs packages from the packages directory
+* sets up a PostgreSQL database to backend the Enterprise Console and PuppetDB
+* started an Apache server for the Enterprise Console and the Puppet Master (puppet master uses REST API which runs on HTTP).
+* puppet is then used to configure mcollective and puppetdb
+* note the puppetdb vertical scaling info
+
+Classroom_Setup/Lab_Preinstallation.md:
+
+* Ask all students for their hostnames and last digit of the IP.
+
+Classroom_Setup/Lab_Installation.md:
+
+* On the master run:
+
+watch -n1 puppet cert list
+
+#### Ubuntu installation
+* get IP
+* ssh in from term
+* ntpdate
+* /etc/hosts, hostname, /etc/hostname
+* cd ~/puppet-enterprise
+* ./puppet-enterprise-installer -s answers.txt
+* ./puppet-enterprise-installer -a answers.txt
+* puppet agent -t
+
+Classroom_Setup/query_all.md:
+
+If you run 'puppet resource user', you will see all of the users on your system formatted in puppet manifest code.
+
+#### Demo
+* `puppet resource user`
+* `puppet resource service`
+* `puppet resource package`
+* `puppet resource user root`
+* `puppet resource user root shell=/bin/zsh`
+* `puppet resource user root >/tmp/root.pp`
+
+Classroom_Setup/demo3.md:
+
+#### Demo
+* puppet module install pltraining/fundamentals
+* Add the class to the console
+* puppet agent -t  # on the ubuntu box twice
+* puppet agent -t  # on the master
+
+Classroom_Setup/git_mini_tutorial_add.md:
+
+* Four stages of a file: <http://git-scm.com/book/en/Git-Basics-Recording-Changes-to-the-Repository>
+
+Classroom_Setup/Lab_git_push.md:
+
+If students are asked for a password, it's because their sshkey wasn't exported and collected
+properly. You should ensure that they've run their agent successfully, and then run Puppet on
+the master again to collect all exported resources. If all else fails, students may use the
+password 'puppetlabs' to complete this lab while you troubleshoot.
+
+#### Discussion Questions
+* Does the word _master_ in the `git push` command refer to `master.puppetlabs.vm`? What does it refer to?
+* Why did you have to accept an RSA key?
+* What happens if you push again? Why?
+
+#### Demo
+* cd ~/puppetcode        # on ubuntu
+* git remote -v          # alex@master.puppetlabs.vm:/var/repositories/alex.git
+* cd /var/repositories/  # on master
+* ls -l
+* cd alex.git
+* ls -l hooks
+* cd /etc/puppetlabs/puppet/environments/alex
+* look in /etc/puppetlabs/puppet/puppet.conf
+* <https://docs.google.com/a/puppetlabs.com/drawings/d/1tmC3idXY2VdXAFX7MXqvQyzCH_Rw38QIPMa2mY144Ys/edit>
+
+Roles/Objectives.md:
+
+We're going to discuss the two roles of Puppet Master and Puppet Agent that the Puppet executable can run it.
+
+Roles/Agent_overview.md:
+
+The puppet 'agent' runs on all puppet-managed nodes.  (just read from the slide slowly.)
+
+Roles/puppet_conf_example.md:
+
+* The configuration file for both the Puppet Master and Agent is /etc/puppetlabs/puppet.conf (and in open source puppet it's /etc/puppet/puppet.conf).
+* This very simple configuration just sets the var, log and run dir, and sets the certname and puppet master hostname.
+
+#### Demo
+* Doco <http://docs.puppetlabs.com/references/latest/configuration.html>
+* Open /etc/puppetlabs/puppet/puppet.conf on the agent
+* certname - crucial setting that is used by the master to identify the agent.  Certname is usually the FQDN.
+* vardir - a directory containing puppet's dynamic and growing data.  Important subdirectories:
+    * classes.txt - the list of classes declared on this node
+    * client_data - contains the cached catalog from the last run
+    * state
+        * state/graphs - dot files showing the resource relationships
+        * state/resources.txt - the list of resources declared on this node
+        * last_run_report.yaml
+* logdir - contains logs - empty by default in PE
+* rundir - contains the agent.pid
+* server - the hostname of the puppet master server to connect to
+* archive_files and archive_file_server (ignore unless asked) - During an inspect run, whether to archive files whose contents are audited to a file bucket
+
+#### graphs demo
+* scp root@10.1.1.39:/var/opt/lib/pe-puppet/state/graphs/* /tmp
+* dot -Tjpg /tmp/relationships.dot -o /tmp/graph.jpg
+* open /tmp/graph.jpg
+
+* In $rundir, just agent.pid.
+
+Roles/Cert_overview.md:
+
+Another function of the Puppet Master (or at least *a* puppet master) is to serve as a certificate authority.  (As we've seen, a signed certificate is needed to authenticate each agent before the master will talk to it.)
+
+Modules_and_Classes/Objectives.md:
+
+Now we're going to start actually looking at some code.  In this lesson we're going to:
+
+* learn about modules and classes.
+* describe the directory structure of a module.
+* talk about WHY we break up our code into modules.
+* talk about the autoloader.
+* and finally, get some terminology straight: defining vs declaring classes.
+
+Modules_and_Classes/Classes_overview.md:
+
+* Who here has done some object-oriented programming?  
+* It's important to be aware that Puppet borrows terminology from object-oriented languages - classes, modules, attributes, and so on - but it's NOT an object-oriented language in any true sense.
+
+A CLASS is just a container for resources - a way of grouping resources together as a unit.  And that's all it is.
+
+Who wants to tell me what the code on this slide does?
+
+Modules_and_Classes/stacking_classes_together.md:
+
+By grouping our resources together as classes, we can move to a higher level of abstraction and say that a node is collection of classes.
+
+So who can tell me what node 'oscar' is from the slide?
+
+Modules_and_Classes/classes_are_reusable.md:
+
+* Another advantage of defining collections of resources is that we can reuse our code.
+* Thus, we can have the same ssh class applied to every one of our nodes.
+
+Modules_and_Classes/classes_are_singleton.md:
+
+* Another OO concept we've borrowed is that of the "singleton".
+* By a "singleton", we mean that a class can only be applied once-per-node.
+* So here's an example of what NOT to do.
+
+Modules_and_Classes/Modules_overview.md:
+
+Meanwhile modules are directories with a pre-defined structure that contain our classes, files, templates, tests, plugins and more.
+
+The pre-defined structure enables:
+
+* auto-loading of classes (which we'll talk about in a moment).
+* the serving of files from our modules.
+* the delivery of extensions - custom facts and providers.
+* and we can easily share our modules with others (e.g. by uploading them to the Puppet Forge).
+
+Modules_and_Classes/auto_loading.md:
+
+Has anyone here used a very old version of Puppet?
+
+* import is a legacy feature that you shouldn't use.
+* in the old days, we loaded our manifests by using 'import *.pp'.
+* this didn't scale so well.
+* didn't lend itself to code sharing.
+* long story short - you should never need to use 'import'.
+
+Modules_and_Classes/auto_loading_2.md:
+
+The right way to import your modules is to leverage the auto-loader.
+
+(demo puppet agent --configprint modulepath.)
+
+Puppet automatically searches all of its module paths and loads modules as required.
+
+Modules_and_Classes/auto_loading_3.md:
+
+Now let's look at the directory structure in a bit more detail.
+
+* If you have a module called 'apache' then Puppet expects to find the class 'apache' inside a file $modulepath/apache/manifests/init.pp.
+* If you have a module called 'apache' and a class called 'apache::mod', puppet expects to find it in $modulepath/apache/manifests/mod.pp.
+* If you have a module called 'apache' and a class called 'apache::mod::php', puppet expects to find it in $modulepath/apache/manifests/mod/php.pp.
+
+Who wants to tell me where we'd find a class foo::bar::baz?
+
+Modules_and_Classes/define_and_declare.md:
+
+Some terminology:
+
+* defining a class is what we just did in the lab.  You have already have the sense that we've written some code, but it hasn't actually done anything.
+* declaring a class is like running or applying it.  We declare a class by "including" it in a node definition.  We can also use the class syntax.
+
+Modules_and_Classes/declaring_2.md:
+
+(refer to slide.)
+
+* So this is "defining" an ssh class.
+* ... and this is "declaring" it.
+
+Modules_and_Classes/smoke_tests.md:
+
+* Another directory inside your module is the "tests" directory.  We put our tests in there.
+* If you come back for the Advanced class, we're going to look at how to write proper unit tests.
+* Today we're just going to look at the simplest test: the "smoke" test.
+* The smoke test come from circuit designers.  If you build a circuit board and plug it in and no smoke comes out, it was assumed that it probably worked.
+* In Puppet a smoke test is basically just a file, tests/init.pp, that contains just a single "include" line.
+
+Modules_and_Classes/Apply_overview.md:
+
+We then use the "puppet apply" executable to run that test.
+
+So what this diagram is saying is that the Puppet agent is also capable of compiling the catalog for the sake of running our test.
+
+Modules_and_Classes/applying_smoke_tests.md:
+
+Here is how we do it:
+
+* Type 'puppet apply tests/init.pp' and puppet will apply the code you've just written.
+
+Modules_and_Classes/Apply_noop.md:
+
+* However you will probably want to start by using the --noop option.
+* Puppet will tell you what it would do without actually doing it.
+
+Modules_and_Classes/Apply_noop2.md:
+
+This slide shows you the output of running 'puppet apply --noop'.
+
+NOTE we also have a noop metaparameter which can be used to turn on --noop for a single resource.
+
+Can anyone have a guess at why we might write code like this?
+
+Modules_and_Classes/Group_example.md:
+
+In a moment we're going to extend our module and to do that we need to know about the "group" resource.
+
+(Read from the slide.)
+
+Modules_and_Classes/Group_spec.md:
+
+And if you want to know more you can type 'puppet describe group' and perhaps pipe that into less.
+
+Or, you can type 'puppet group type' into google and you'll get the online documentation.
+
+Classification/demo_site_pp.md:
+
+#### Demo 1
+* open /etc/puppetlabs/puppet/manifests/site.pp
+* Filebucket is a special resource type that tells puppet where to backup old file content to.
+
+#### Demo 2
+* Add a node block for alex
+
+.break text
+
+    @@@ Puppet
+    node 'alex.puppetlabs.vm' {
+      notify { 'hello from the node definition!': }
+    }
+
+#### Demo 3
+* Add a notify to default - show that it's not used while an exact match node definition exists.
+
+.break text
+
+    @@@ Puppet
+    node default {
+      notify { 'hello from the default node': }
+    }
+
+.break text
+
+#### Demo 4
+* Now remove the alex node block and show that default node is used.
+
+#### Demo 5
+* Explain that the external_node script comes from the external_node setting in puppet.conf, and this accesses the Enterprise Console's ENC.  Explain that we're about to look at, but point out that the default node is being applied despite alex being classified by the ENC.  Explain the other consequence that the node alex block was merged with the contents of the ENC alex block.
+
+* See also <http://docs.puppetlabs.com/guides/external_nodes.html#how-merging-works>
+
+.break text
+
+    @@@ Shell
+    # grep external /etc/puppetlabs/puppet/puppet.conf
+    # /etc/puppetlabs/puppet-dashboard/external_node alex.puppetlabs.vm
+
+Point out that the default node is being applied despite alex being classified by the ENC.
+
+Resources/Namevar_overview.md:
+
+Most resources have an attribute (often called 'name') whose value will default to the title if you don’t specify it. (Internally, the attribute with this property is called the “namevar.”) Thus, commonly used types like user, group, package and service all have namevars called 'name', whereas the file type has a namevar called 'path', exec has namevar 'command', and so on.
+
+A resource’s namevar value almost always has to be unique. (There are a few exceptions.)
+
+Resources/Exec_Resource.md:
+
+The exec resource is intended for use in edge-case situations only.  By that I mean to cope with situations Puppet wasn't designed explicitly to deal with.
+
+A controversial, but easy to understand, example is the tar ball installer.
+
+    @@@ Puppet
+    exec { 'tar xvf /tmp/hpov.tar':
+      path => '/bin',
+      cwd => '/opt',
+      creates => '/opt/OV',
+    }
+
+Resources/Advanced_Resources.md:
+
+If you come back for the Advanced Puppet course you'll learn about exported resources and virtual resources.  I'll briefly explain what they are and what they're for.
+
+Virtual resource:
+
+    * A virtual resource is needed in situations where two or more unrelated classes need to define and manage the same resource.
+    * Example - a hosts file entry.
+
+    @@@ Puppet
+    class app1 {
+      ...
+      host { 'myprinter':
+        ensure => present,
+        ip     => '10.0.0.10',
+      }
+    }
+    
+    class app2 {
+      ...
+      host { 'myprinter':
+        ensure => present,
+        ip     => '10.0.0.10',
+      }
+    }
+
+* Exported resources:
+
+    * Exported resources are like virtual resources except they are exported to a database (called the 'puppetDB') so that they can be shared across multiple nodes.
+    * Class use-case is the sshkey problem.
+    * When new hosts are brought online, the 'known_hosts' file of every other host becomes stale, and this causes the 'unknown host' message and a warning about man-in-the-middle attacks to appear.
+    * You can 'export' the sshkey of a new host into the PuppetDB and at the next puppet run, it can be imported into known_hosts file on every other node.
+
+Resource_Relationships/Objectives.md:
+
+In this lesson we're going to talk about:
+
+* Ordering of resources.
+* How to have a service refresh if a resource changes.
+* And talk about the very important Package | File | Service design pattern.
+
+Resource_Relationships/Res_Rel_overview.md:
+
+* As we mentioned yesterday, Puppet is a declarative programming language.
+* We declare a desired state, rather than the sequence of steps needed to bring about the desired state.
+* One consequence of this is, the order in which changes to resources are applied is fundamentally non-deterministic.
+
+(Give the example of /tmp/foo with /tmp/{a,b,c,d,e}.)
+
+* On the other hand, the code is certainly *parsed* in the order in which it's written.
+
+(Give example of /tmp/foo with a variable before and after it's used.)
+
+* Read from slide, "Manifests are parsed..."
+
+#### graphs demo
+* scp root@10.1.1.39:/var/opt/lib/pe-puppet/state/graphs/* /tmp
+* dot -Tjpg /tmp/relationships.dot -o /tmp/graph.jpg
+* open /tmp/graph.jpg
+
+Resource_Relationships/meta.md:
+
+So in the example I've shown you the order isn't important.
+
+But let's suppose it does matter.  Suppose my boss is a control freak and says it's unacceptable to create 5 files a, b, c, d, e if you're not going to create them in order.
+
+To deal with this situation, Puppet provides four 'metaparameters' that allow us to impose ordering.
+
+#### graphs demo
+* scp root@10.1.1.39:/var/opt/lib/pe-puppet/state/graphs/* /tmp
+* dot -Tjpg /tmp/relationships.dot -o /tmp/graph.jpg
+* open /tmp/graph.jpg
+
+Resource_Relationships/require.md:
+
+The first of these is 'require'.
+
+Suppose we need changes to the green resource in this diagram to always be applied before the orange resource.
+
+We can say that the orange resource 'requires' changes to the green resource to have already been applied.
+
+(Show how you can order the 5 files using require.)
+
+Resource_Relationships/reference.md:
+
+Did anyone notice that the first letter of 'Package' was capitalized?
+
+Resource_Relationships/before.md:
+
+Another way of doing the same thing is 'before'.
+
+Suppose we don't want to say that changes to the orange resource 'require' changes to the green resource.
+
+Suppose instead we want to think about this the other way around, and say that changes to the 'orange' resource must come 'before' the green resource.
+
+(Refactor the file example.)
+
+Resource_Relationships/subscribe_notify.md:
+
+A different kind of relationship exists when a service needs to refresh after a change to a file.
+
+Suppose we change the sshd_config file.  We need to refresh the sshd service.
+
+Depending on what the service is the refresh behavior is different.  So a change to the sshd config file leads to a service refresh; a change to an Apache config file leads to a service restart.  Puppet mostly figures all this out internally.
+
+Resource_Relationships/subscribe.md:
+
+If the orange resource needs to refresh when the green resource changes, we say the orange resource 'subscribes' to the green resource.
+
+Resource_Relationships/PFS_overview.md:
+
+One of the most common situations encountered when writing Puppet modules is a need to, firstly, install a package; then edit or install a configuration file; and then start a service.
+
+We refer to this as the 'Package | File | Service' pattern, and it's the bread and butter of puppet code writing if you like.
+
+Language_Constructs/Variables_overview.md:
+
+(Read from this slide.)
+
+Language_Constructs/quoting.md:
+
+Variables can be interpolated in strings in much the same way as in shell and perl.
+
+    * Single-quoted strings are literal strings and do not admit interpolation.
+    * Double-quoted strings do admit variable interpolation and special characters like the newline.
+
+Programming best practice: when should you use single-quotes and when should you use double-quotes?
+
+    * always use single-quoted strings unless it is required to be double-quoted.
+    * This will make your code easier to understand.
+
+Defined_Resources/Objectives.md:
+
+* We're going to talk about defined types now.
+* Before we do, however, I want to write a code example.
+
+(Show the example of five files again.  Extend to eight to bring home the point. Ask the students what's wrong with the code.)
+
+(Go to the next slide before showing the answer.)
+
+Defined_Resources/overview.md:
+
+* We need a general way to deal with repeated code.
+* In other languages we have macros or functions or procedures.
+
+(Read the three bullets.)
+
+(Now finish the example using a defined type.)
+
+Defined_Resources/example.md:
+
+(Find out how many students actually understand what Apache vhosts are.)
+
+* Here is a more complicated example.
+* Imagine lots of Apache conf files that depend on a number of variables.
+* Also notice how we have used the magic variable $name in the file title.
+
+(Read this point later, when we return to this slide.)
+
+* Note that most of these variables will be used inside the ERB template, so we can't see them here.
+
+(Explain $name, and return to the muppets example.)
+
+Defined_Resources/uniqueness.md:
+
+* A perhaps surprising aspect of defined types is the names of resources inside them are not protected.
+* (Go back to three muppets example and change the title to 'foo'.)
+* So in the apache example we're using $name in the name of the conf file, and that guarantees its uniqueness.
+
+Defined_Resources/with_template.md:
+
+(go back two slides and ask students to think about what all the variables are for.)
+
+Point out that the variables passed in this example are used inside the template.
+
+Defined_Resources/module_structure.md:
+
+* Now let's talk about *where* we define defined types in our module structure.
+* We follow the same convention as with classes.
+* (example) So if we want to define a type 'apache::vhost' in our apache module, it will be inside file apache/manifests/vhost.pp.
+Is everyone clear about this?
+
+Defined_Resources/all_together.md:
+
+Now that we have defined our vhost type we can apply it as many times as we like on the same node, and this will save us time and avoid errors.
+
+Forge/Forge_intro.md:
+
+Puppet Forge is at https://forge.puppetlabs.com/, and go there.
+
+(point out the download count is now 65,000, compared to 20,000 on the slide.)
+
+(click to download.)
+
+Forge/Face_overview.md:
+
+Let's talk about the Module Tool then.
+
+(read slide.)
+
+Forge/list.md:
+
+(demo the actual command on the master.)
+
+Forge/search.md:
+
+(repeat the search and relate it to what we saw in the web page.)
+
+Templates/Objectives.md:
+
+In this lesson we'll talk about:
+* ERB templates, which we use to add dynamic content to files.
+
+Templates/Separation_of_concerns.md:
+
+(Ignore first 3 bullets.)
+ 
+* ERB templates allow us to hide the complexity of dynamic content in files from our manifests.
+* Another benefit is we can update our files without changing the manifests (reduces the likelihood of introducing errors).
+
+Advanced_Classes/inherited_classes_1.md:
+
+* Class inheritance is basically an old language feature that pre-dates parameterized classes, which were introduced in Puppet version 2.6.
+* In the old days people often would write a base class as in the example shown in this slide.
+
+Advanced_Classes/inherited_classes_4.md:
+
+* So when should we use inheritance?
+* Our opinion in Puppet Labs is that the only remaining use-case for inheritance is the so-called "params pattern".
+* Demo params from puppetlabs/ntp.
+
+Live_Management/Objectives.md:
+
+In this lesson we look at the Live Management function in the Enterprise Console and very briefly look at MCollective.
+
+Live_Management/Network_visibility.md:
+
+* Live Management (LM) is a feature of the Puppet Enterprise Console that uses MCollective and ActiveMQ to provide a parallel job execution framework with other capabilities like network discovery and data based node selection.
+* MCollective is the tool underneath that was written by RI Pienar, who also wrote Hiera.
+* With Live Management you can:
+    * discover the state of network resources.
+    * stop and start services, e.g. stop the puppet agents or force an immediate run of the agents.
+
+Live_Management/Orchestration.md:
+
+* Here we provide an example use case for Live Management.
+* Imagine you're managing a fleet of servers and you discover a bunch of servers need a critical security update.  You could:
+    * Use MCollective to issue an immediate yum update out of band.
+
+Live_Management/what_is_mcollective.md:
+
+* As mentioned, the Live Management function of the PE Console uses RI Pienar's MCollective.
+* MCO runs on top of ActiveMQ (actually it can run on any message bus, e.g. RabbitMQ being another popular alternative.
+* So.. a lot of words on this slide but it boils down basically to:
+    * A framework for parallel job execution - more powerful than "ssh in a for loop"
+
+Live_Management/why_mcollective.md:
+
+We've seen some of the benefits already:
+
+* Tools like SCCM, BladeLogic and so on: very centralised - you need to tell the system what's out there.
+
+Live_Management/demo_browse_resources.md:
+
+* This might be useful: <http://docs.puppetlabs.com/pe/latest/orchestration_puppet.html>
+
+Data_Separation/Overview.md:
+
+* Single source of truth is the principle that you only want to ever store one copy of a single piece of information.
+* Talk about example of changing my direct debit information.
+* Example:
+    * Alex Harvey, 1 some street, somewhere, 4546060034221322
+    * Alex Harvey, 1 some street, somewhere, 062354 6660006
+
+Data_Separation/Hiera_Overview.md:
+
+I want to now relate SSOT design to Puppet design and get you all to understand what the problem is, and how Hiera solves the problem.
+
+This treatment here is a cut down version of Gary Larizza's <http://puppetlabs.com/blog/the-problem-with-separating-data-from-puppet-code>.  See also <http://garylarizza.com/blog/2013/12/08/when-to-hiera/>
+
+Imagine this:
+
+    @@@ Puppet
+    $dnsserver    = '8.8.8.8'
+    $searchdomain = 'puppetlabs.vm'
+    file { '/etc/resolv.conf':
+      ensure  => present
+      content => "search ${searchdomain}\n nameserver ${dnsserver}\n",
+    }
+
+What's the problem?
+
+First solution:  inheritance.
+
+    @@@ Puppet
+    node common {
+      $dnsserver    = '8.8.8.8'
+      $searchdomain = 'puppetlabs.vm'
+    }
+    node lab inherits common {
+      $dnsserver = '10.13.1.3'
+    }
+    node 'laptop.puppetlabs.vm' inherits lab {
+      file { '/etc/resolv.conf':
+        content => "search ${searchdomain}\n nameserver ${dnsserver}\n",
+      }
+    }
+
+Problem:  very hard to follow.  Imagine if node common, production and agent were in separate files.
+
+Data_Separation/Hiera_Example_before.md:
+
+If you don't worry about the problem of data separation early, there's a good chance you'll end up over time with code that looks about like this:
+
+Data_Separation/Hiera_Example_after.md:
+
+But if you've designed your hierarchies properly and you're using Hiera, you'll end up with nice readable code in your manifests like this:
+
+Data_Separation/Hiera_design_capabilities.md:
+
+Data_Separation/Hiera_Demo.md:
+
+Problem:  write a DNS parameterized class that allows individual nodes to inherit different DNS servers.
+
+    @@@Yaml
+    ---
+    :backends:
+      - yaml
+    :yaml:
+      - /etc/puppetlabs/puppet/hieradata
+    :hierarchy:
+      - "node/%{::fqdn}
+      - common
+
+.break text
+
+    @@@ Puppet
+    class dns (
+      $nameserver = hiera('nameserver')
+      $search = hiera('search')
+    ) {
+      $ns_text = inline_template("<% @nameserver.each do |n| -%>
+    nameserver <%= n %>
+    <% end -%>")
+    
+      file { '/etc/resolv.conf':
+        ensure => file,
+        content => $ns_text,
+      }
+    }
+
