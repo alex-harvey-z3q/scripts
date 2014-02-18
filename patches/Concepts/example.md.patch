@@ -5,7 +5,7 @@
 -# Resource Declarations
 -## Resources are managed in terms of *attributes*.
 +# Resource Attributes
-+## Resources have *attributes* that can be set.
++## Resources are managed by setting *attributes*.
  
 -* Instruct Puppet to manage a **package**:
 +* Set attributes for a **user** resource:
@@ -16,7 +16,7 @@
 -    package { 'openssh':
 -      ensure => present,
 +    user { 'elvis':
-+      ensure => present,      # The 'ensure' attribute is set to 'present'
++      ensure => present,    # The 'ensure' attribute is set to 'present'
 +      home   => '/graceland', # The 'home' attribute set to '/graceland'
      }
  
