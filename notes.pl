@@ -43,6 +43,7 @@ foreach my $notes (@notes) {
             chomp;
             $slide = $_;
             $slide =~ s/:$//;
+            $slide =~ s/^  #### +//;
             die("$courseware_dir/$slide not found") if (!slide_exists("$courseware_dir/$slide"));
             next;
         }
