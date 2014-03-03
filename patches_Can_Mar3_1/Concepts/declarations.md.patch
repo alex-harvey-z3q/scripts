@@ -1,0 +1,13 @@
+--- a/Concepts/declarations.md
++++ b/Concepts/declarations.md
+@@ -5,8 +5,8 @@
+     # Type is 'user'
+     # Title is 'elmo'
+     user { 'elmo':
+-      ensure => present,    # The attribute 'ensure' is set to 'present'
+-      gid    => 'sysadmin',  # The attribute `gid` is set to `sysadmin`
++      ensure => present,    # The attribute 'ensure' is set to 'present'
++      gid    => 'sysadmin',  # The attribute 'gid' is set to 'sysadmin'
+     }
+ 
+ * Type and title pairs must be unique for a node.

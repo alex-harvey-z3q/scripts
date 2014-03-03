@@ -1,0 +1,15 @@
+diff --git a/Roles/Objectives.md b/Roles/Objectives.md
+index 91e5720..a1c79d8 100644
+--- a/Roles/Objectives.md
++++ b/Roles/Objectives.md
+@@ -4,8 +4,5 @@
+ 
+ At the end of this lesson, you will be able to:
+ 
+-* Describe the roles of the agent and the master.
+-* Identify how the Puppet Catalog fits into Puppet workflow.
+-* Recognize standard module paths.
+-* Describe node classification.
+-* Describe the SSL relationship between agent and master.
++* Describe the roles of the agent, master, and console.
++* Describe the certificate signing process in Puppet Enterprise.

@@ -1,0 +1,16 @@
+--- a/About_Puppet/About_Puppet.md
++++ b/About_Puppet/About_Puppet.md
+@@ -5,11 +5,11 @@ IT Automation Software for System Administrators:
+ 
+ * Founded in **2005**
+ * First commercial product release in **2011**
+-* **1,000+** Puppet Forge modules
++* **2,000+** Puppet Forge modules
+ * **6,000+** Community Members
+ * **20,000+** Users
+ * **50,000+** Nodes managed in the largest deployments
+-* Support for Red Hat, CentOS, Ubuntu, Debian, SUSE, Solaris 10, Windows, Mac OS X
++* Support for Red Hat, CentOS, Ubuntu, Debian, SUSE, Solaris, AIX, Windows, Mac OS X
+ * Investments from Google Ventures, Cisco, VMware, Kleiner Perkins, and True Ventures
+ 
+ ~~~SECTION:notes~~~
