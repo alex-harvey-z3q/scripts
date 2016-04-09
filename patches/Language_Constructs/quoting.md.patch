@@ -1,9 +1,0 @@
---- Language_Constructs/quoting.md.orig	2014-01-20 12:20:03.000000000 +1100
-+++ Language_Constructs/quoting.md	2014-02-03 03:11:19.000000000 +1100
-@@ -1,5 +1,5 @@
- <!SLIDE>
--# Constructing Strings
-+# Variable interpolation
- 
- Single-quoted strings are literal strings:
- 
