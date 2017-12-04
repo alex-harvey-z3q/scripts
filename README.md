@@ -40,3 +40,12 @@ Then:
 $ create_my_spec.rb myclass.json > spec/classes/init_spec.rb
 ```
 
+## make_jail.sh
+
+Guesses the files required for a chroot'ed jail on Mac OS X.
+
+Assumes you have the following line in sudoers:
+
+~~~
+%admin    ALL = (ALL) NOPASSWD: /usr/sbin/chroot
+~~~
