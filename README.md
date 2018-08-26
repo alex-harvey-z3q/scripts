@@ -40,3 +40,12 @@ Then:
 $ create_my_spec.rb myclass.json > spec/classes/init_spec.rb
 ```
 
+## gen_markdown_toc.rb
+
+A ruby script to generate a Markdown table of contents suitable for use on Github.
+
+```
+$ gen_markdown_toc.rb FILE.md
+```
+
+
