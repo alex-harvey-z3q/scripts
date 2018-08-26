@@ -40,6 +40,16 @@ Then:
 $ create_my_spec.rb myclass.json > spec/classes/init_spec.rb
 ```
 
+## make_jail.sh
+
+Guesses the files required for a chroot'ed jail on Mac OS X.
+
+Assumes you have the following line in sudoers:
+
+~~~
+%admin    ALL = (ALL) NOPASSWD: /usr/sbin/chroot
+~~~
+
 ## gen_markdown_toc.rb
 
 A ruby script to generate a Markdown table of contents suitable for use on Github.
@@ -47,5 +57,3 @@ A ruby script to generate a Markdown table of contents suitable for use on Githu
 ```
 $ gen_markdown_toc.rb FILE.md
 ```
-
-
