@@ -11,9 +11,14 @@ def header_to_string(s)
 end
 
 c = 1 ; File.open(source_file).each_line do |line|
-  if line =~ /^#/
+
+  base = File.basename(source_file)
+
+  if line.match(/^#/)
+
     level, header = line.match(/^(#+) (.*)/).captures
     ref = header_to_string(header)
+
     case level
     when '#'
       next
@@ -25,7 +30,8 @@ c = 1 ; File.open(source_file).each_line do |line|
     when '####'
       start = "        * "
     end
-    puts "#{start}[#{header}][#{ref}]"
+
+    puts "#{start}[#{header}](#{base}" + '#' + "#{ref})"
   end
 end
 
