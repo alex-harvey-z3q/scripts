@@ -65,3 +65,11 @@ Change the author on all commits in a Git repo.
 ```
 $ git_change_author.sh [NEW_EMAIL] OLD_EMAIL
 ```
+
+## DiffHighlight.pl
+
+Copied from the Git source code [here](https://github.com/git/git/tree/master/contrib/diff-highlight) and converted to a standalone Perl script.
+
+```
+$ diff -u FILE1 FILE2 | perl DiffHighlight.pl
+```
