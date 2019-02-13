@@ -1,3 +1,5 @@
+#!/usr/bin/env perl
+
 use 5.008;
 use warnings FATAL => 'all';
 use strict;
