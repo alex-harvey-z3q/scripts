@@ -57,3 +57,11 @@ A ruby script to generate a Markdown table of contents suitable for use on Githu
 ```
 $ gen_markdown_toc.rb FILE.md
 ```
+
+## git_change_author.sh
+
+Change the author on all commits in a Git repo.
+
+```
+$ git_change_author.sh [NEW_EMAIL] OLD_EMAIL
+```
