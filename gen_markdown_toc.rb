@@ -43,8 +43,8 @@ class ToCWriter
   def header_to_ref
     @header
       .downcase
-      .gsub(/[^a-zA-Z\d_]/, "")
-      .gsub(/ +/, "-")
+      .gsub(/[^a-z\d_\- ]+/, "")
+      .gsub(/ /, "-")
   end
 
   def set_start
