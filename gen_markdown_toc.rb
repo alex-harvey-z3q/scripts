@@ -45,6 +45,7 @@ class ToCWriter
       .downcase
       .gsub(/[^a-z\d_\- ]+/, "")
       .gsub(/ /, "-")
+      .gsub(/-$/, "")
   end
 
   def set_start
