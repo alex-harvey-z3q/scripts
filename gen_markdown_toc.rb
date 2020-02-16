@@ -1,15 +1,22 @@
 #!/usr/bin/env ruby
 
+TOP = 2 ; MAX = 4
+
 def usage
-  puts "Usage: #{$0} FILE.md"
+  puts <<~EOF
+    Usage: #{$0} FILE.md [TOP [MAX]] [-h]
+    FILE.md is your Markdown source document.
+    TOP is the top-level Markdown heading level in your document. Default is #{TOP}.
+    MAX is the maximum heading level to include in your table of contents. Default is #{MAX}.
+  EOF
   exit 1
 end
 
 class ToCWriter
-  def initialize(source_file, top=2, max=4)
+  def initialize(source_file, top=TOP, max=MAX)
     @source_file = source_file
-    @top = top
-    @max = max
+    @top = top.to_i
+    @max = max.to_i
     @count = 1
     @level  = ""
     @header = ""
@@ -60,7 +67,7 @@ class ToCWriter
   end
 end
 
-usage unless ARGV.length == 1
-source_file = ARGV[0]
+usage unless ARGV.length > 0
+usage if ARGV[0] == "-h"
 
-ToCWriter.new(source_file).write
+ToCWriter.new(*ARGV).write
