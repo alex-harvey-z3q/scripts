@@ -52,11 +52,7 @@ Assumes you have the following line in sudoers:
 
 ## gen_markdown_toc.rb
 
-A ruby script to generate a Markdown table of contents suitable for use on Github.
-
-```
-$ gen_markdown_toc.rb FILE.md [TOP [MAX]]
-```
+This has moved to its own project [here](https://github.com/alexharv074/markdown_toc).
 
 ## git_change_author.sh
 
